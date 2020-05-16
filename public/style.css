@@ -240,6 +240,10 @@ template {
  * Add the correct display in IE 10.
  */
 
+[hidden] {
+  display: none;
+}
+
 /**
  * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
  * A thin layer on top of normalize.css that provides a starting point more
@@ -489,6 +493,10 @@ svg {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -576,6 +584,10 @@ svg {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .p-6 {
@@ -674,10 +686,22 @@ svg {
   text-align: center;
 }
 
+.text-gray-300 {
+  --text-opacity: 1;
+  color: #e2e8f0;
+  color: rgba(226, 232, 240, var(--text-opacity));
+}
+
 .text-gray-600 {
   --text-opacity: 1;
   color: #718096;
   color: rgba(113, 128, 150, var(--text-opacity));
+}
+
+.hover\:text-black:hover {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
 }
 
 .hover\:text-red-800:hover {
@@ -704,10 +728,20 @@ svg {
   width: 100vw;
 }
 
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
 .transition-opacity {
   transition-property: opacity;
 }
 
 .duration-300 {
   transition-duration: 300ms;
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block;
+  }
 }
