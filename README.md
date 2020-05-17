@@ -6,4 +6,6 @@ Aims to minimize the time to answer mundane queries like “what does [stunned](
 
 ## License
 
-Own code under MIT, upstream SRD data from [5e-database](https://github.com/bagelbits/5e-database) under OGL.
+- own code under MIT
+- icons from [Bytesize](https://github.com/danklammer/bytesize-icons) under MIT
+- upstream SRD data from [5e-database](https://github.com/bagelbits/5e-database) under OGL
