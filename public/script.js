@@ -67,13 +67,19 @@ const data = {
         typeLoadedCallback(type)
       })
   },
-  query (type, query) {
+  query (query) {
     if (!query) {
       return []
     }
 
     query = query.toLowerCase()
 
+    return Object.keys(sources)
+      .map(type => this.filter(type, query))
+      .flat()
+      .sort((a, b) => a.name.localeCompare(b.name))
+  },
+  filter (type, query) {
     if (type === query) {
       return rawData[type]
     }
@@ -161,14 +167,9 @@ Vue.component('App',
         }
 
         window.location.hash = query
-
-        const results = this.types
-          .map(type => data.query(type, query))
-          .flat()
-          .sort((a, b) => a.name.localeCompare(b.name))
-
-        this.results = results.slice(0, showSize)
-        this.more = results.slice(showSize)
+        const results = data.query(query)
+        this.results = results.splice(0, showSize)
+        this.more = results
       },
       navigate () {
         this.search = window.location.hash.substring(1).replace(/%20/g, ' ')
