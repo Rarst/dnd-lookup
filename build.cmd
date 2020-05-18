@@ -1,1 +1,1 @@
-tailwindcss build tailwind.css -o public/style.css -c tailwind.config.js
+tailwindcss build tailwind.css -o public/style.css
