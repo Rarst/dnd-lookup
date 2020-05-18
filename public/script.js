@@ -169,9 +169,7 @@ Vue.component('App',
         this.more = results
       },
       navigate () {
-        if (window.location.hash) {
-          this.search = window.location.hash.substring(1).replace(/%20/g, ' ')
-        }
+        this.search = window.location.hash.substring(1).replace(/%20/g, ' ')
       },
       loadMore () {
         this.results.push(...this.more.splice(0, showSize))
