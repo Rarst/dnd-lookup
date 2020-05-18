@@ -207,9 +207,7 @@ Vue.component('App',
         }
       },
       componentType (type) {
-        const generic = ['conditions', 'damage types', 'magic schools', 'properties', 'skills']
-
-        return generic.includes(type) ? 'search-item' : type
+        return type in Vue.options.components ? type : 'search-item'
       }
     }
   }
