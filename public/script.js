@@ -35,11 +35,11 @@ const showSize = 20
 const data = {
   fetchAll (typeLoadedCallback) {
     return Promise.all(
-      Object.entries(sources).map(([type, source]) => this.fetch(type, source, typeLoadedCallback))
+      Object.keys(sources).map(type => this.fetch(type, typeLoadedCallback))
     )
   },
-  fetch (type, file, typeLoadedCallback) {
-    return window.fetch(`https://cdn.jsdelivr.net/gh/bagelbits/5e-database@master/src/5e-SRD-${file}.json`)
+  fetch (type, typeLoadedCallback) {
+    return window.fetch(`https://cdn.jsdelivr.net/gh/bagelbits/5e-database@master/src/5e-SRD-${sources[type]}.json`)
       .then(response => response.json())
       .then(data => {
         if (type === 'abilities') {
