@@ -143,10 +143,7 @@ Vue.component('App',
     methods: {
       init () {
         data.fetchAll(type => this.types.push(type)).then(() => {
-          if (window.location.hash) {
-            this.search = window.location.hash.substring(1).replace(/%20/g, ' ')
-          }
-
+          this.navigate()
           this.types.sort()
           this.loading = false
         })
@@ -172,7 +169,9 @@ Vue.component('App',
         this.more = results
       },
       navigate () {
-        this.search = window.location.hash.substring(1).replace(/%20/g, ' ')
+        if (window.location.hash) {
+          this.search = window.location.hash.substring(1).replace(/%20/g, ' ')
+        }
       },
       loadMore () {
         this.results.push(...this.more.splice(0, showSize))
