@@ -146,6 +146,7 @@ Vue.component('App',
           this.navigate()
           this.types.sort()
           this.loading = false
+          this.$nextTick(() => this.focus())
         })
       },
       handleScroll () {
@@ -181,8 +182,11 @@ Vue.component('App',
         if (resetInput) {
           window.location.hash = ''
           this.search = ''
-          this.$refs.input.focus()
+          this.focus()
         }
+      },
+      focus () {
+        this.$refs.input.focus()
       },
       componentType (type) {
         return type in Vue.options.components ? type : 'search-item'
