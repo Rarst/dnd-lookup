@@ -89,7 +89,7 @@ const data = {
 
     if (type === 'equipment') {
       filtered = filtered.concat(
-        rawData[type].filter(item => item.equipment_category.toLowerCase() === query)
+        rawData[type].filter(item => item.equipment_category.name.toLowerCase() === query)
       )
       duplicates = true
     }
@@ -303,7 +303,7 @@ Vue.component('equipment', {
     <p v-if="item.vehicle_category"><strong class="font-semibold">Vehicle category:</strong> {{item.vehicle_category}}</p>
     <p>
         <strong class="font-semibold">Category:</strong>
-        <item-link :linkTo="item.equipment_category"></item-link>
+        <item-link :linkTo="item.equipment_category.name"></item-link>
     </p>
     
     <template v-if="item.category_range">
