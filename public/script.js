@@ -340,7 +340,7 @@ Vue.component('features', {
     <item-header :item="item"></item-header>
     <p>
         <strong class="font-semibold">Class:</strong> 
-        <item-link v-if="item.subclass.name" :linkTo="item.subclass.name"></item-link> 
+        <item-link v-if="item.subclass && item.subclass.name" :linkTo="item.subclass.name"></item-link> 
         <item-link :linkTo="item.class.name"></item-link> 
         <span v-if="item.level">level {{item.level}}</span>
     </p>
