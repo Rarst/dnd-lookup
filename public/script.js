@@ -261,7 +261,7 @@ Vue.component('classes', {
   template: `
 <div class="mt-3 border rounded-lg py-3 px-6 space-y-3">
     <item-header :item="item"></item-header>
-    <p><strong class="font-semibold">Hit Die:</strong> d{{item.hit_die}}</span></p>
+    <p><strong class="font-semibold">Hit Die:</strong> d{{item.hit_die}}</p>
     <p>
         <strong class="font-semibold">Saving Throws Proficiencies:</strong>
         {{ item.saving_throws.map(st=>st.name).join(', ') }}
