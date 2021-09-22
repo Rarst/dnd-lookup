@@ -22,7 +22,6 @@ const sources = {
   properties: 'Weapon-Properties',
   races: 'Races',
   skills: 'Skills',
-  spellcasting: 'Spellcasting',
   spells: 'Spells',
   subclasses: 'Subclasses',
   subraces: 'Subraces',
@@ -49,14 +48,9 @@ const data = {
             return item
           })
         } else if (type === 'features') {
-          data = data.filter(item => !item.name.includes('Spellcasting: '))
+          // data = data.filter(item => !item.name.includes('Spellcasting: '))
         } else if (type === 'proficiencies') {
           data = data.filter(item => item.classes.length || item.races.length)
-        } else if (type === 'spellcasting') {
-          data = data.map(item => {
-            item.name = `Spellcasting (${item.class.name})`
-            return item
-          })
         }
         rawData[type] = data.map(item => {
           item.search_type = type
@@ -272,7 +266,7 @@ Vue.component('classes', {
         <strong class="font-semibold">Saving Throws Proficiencies:</strong>
         {{ item.saving_throws.map(st=>st.name).join(', ') }}
     </p>
-    <p v-if="item.spellcasting.class" class="-ml-1"><item-link :linkTo="'Spellcasting ('+item.spellcasting.class+')'"></item-link></p>
+<!--    <p v-if="item.spellcasting.class" class="-ml-1"><item-link :linkTo="'Spellcasting ('+item.spellcasting.class+')'"></item-link></p>-->
     <links-section :item="item" section="proficiencies"></links-section>
     <div v-if="item.proficiency_choices.length">
         <h3 class="font-bold">Proficiency options</h3>
@@ -499,18 +493,18 @@ Vue.component('races', {
 </div>`
 })
 
-Vue.component('spellcasting', {
-  props: ['item'],
-  template: `
-<div class="mt-3 border rounded-lg py-3 px-6 space-y-3">
-    <item-header :item="item"></item-header>
-    <p><strong class="font-semibold">Level</strong> {{item.level}}</p>
-    <template v-for="info in item.info">
-        <h3 class="font-bold">{{info.name}}</h3>
-        <p v-for="paragraph in info.desc">{{paragraph}}</p>
-    </template>
-</div>`
-})
+// Vue.component('spellcasting', {
+//   props: ['item'],
+//   template: `
+// <div class="mt-3 border rounded-lg py-3 px-6 space-y-3">
+//     <item-header :item="item"></item-header>
+//     <p><strong class="font-semibold">Level</strong> {{item.level}}</p>
+//     <template v-for="info in item.info">
+//         <h3 class="font-bold">{{info.name}}</h3>
+//         <p v-for="paragraph in info.desc">{{paragraph}}</p>
+//     </template>
+// </div>`
+// })
 
 Vue.component('spells', {
   props: ['item'],
