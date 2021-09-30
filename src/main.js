@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import './index.css'
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

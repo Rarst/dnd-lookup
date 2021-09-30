@@ -1,1 +1,0 @@
-tailwindcss build tailwind.css -o public/style.css
