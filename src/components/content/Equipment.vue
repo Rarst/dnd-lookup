@@ -18,9 +18,9 @@
       <template v-if="item.category_range">
           <p><strong class="font-semibold">Weapon type:</strong> {{item.category_range}}</p>
 
-          <p>
+          <p v-if="item.damage">
               <strong class="font-semibold">Damage:</strong> {{item.damage.damage_dice}}
-              <span v-if="item['2h_damage']">({{item['2h_damage'].damage_dice}} two–handed)</span>
+              <span v-if="item.two_handed_damage">({{item.two_handed_damage.damage_dice}} two–handed)</span>
               {{item.damage.damage_type.name}}
           </p>
 
