@@ -1,6 +1,7 @@
 import types from './types.js'
 
 const rawData = {}
+const version = '8a43493cf40c34a590ed9082f5b0a9bdd309be3d'
 
 export default {
 
@@ -11,7 +12,7 @@ export default {
   },
 
   fetch (type, typeLoadedCallback) {
-    return window.fetch(`https://cdn.jsdelivr.net/gh/bagelbits/5e-database@master/src/5e-SRD-${types[type].file}.json`)
+    return window.fetch(`https://cdn.jsdelivr.net/gh/bagelbits/5e-database@${version}/src/5e-SRD-${types[type].file}.json`)
       .then(response => response.json())
       .then(data => {
         if (type === 'abilities') {
