@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c2b8afa6-61cc-49a9-9e57-39d8276aa96f/deploy-status)](https://app.netlify.com/sites/dnd-rarst/deploys)
+
 # [D&D Lookup](https://dnd.rarst.net/)
 
 A small search web app for [Dungeons & Dragons 5th edition System Reference Document](https://dnd.wizards.com/articles/features/systems-reference-document-srd).
