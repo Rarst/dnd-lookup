@@ -1,22 +1,4 @@
-const sources = {
-  abilities: 'Ability-Scores',
-  classes: 'Classes',
-  conditions: 'Conditions',
-  'damage types': 'Damage-Types',
-  equipment: 'Equipment',
-  features: 'Features',
-  languages: 'Languages',
-  'magic schools': 'Magic-Schools',
-  monsters: 'Monsters',
-  proficiencies: 'Proficiencies',
-  properties: 'Weapon-Properties',
-  races: 'Races',
-  skills: 'Skills',
-  spells: 'Spells',
-  subclasses: 'Subclasses',
-  subraces: 'Subraces',
-  traits: 'Traits'
-}
+import types from './types.js'
 
 const rawData = {}
 
@@ -24,12 +6,12 @@ export default {
 
   fetchAll (typeLoadedCallback) {
     return Promise.all(
-      Object.keys(sources).map(type => this.fetch(type, typeLoadedCallback))
+      Object.keys(types).map(type => this.fetch(type, typeLoadedCallback))
     )
   },
 
   fetch (type, typeLoadedCallback) {
-    return window.fetch(`https://cdn.jsdelivr.net/gh/bagelbits/5e-database@master/src/5e-SRD-${sources[type]}.json`)
+    return window.fetch(`https://cdn.jsdelivr.net/gh/bagelbits/5e-database@master/src/5e-SRD-${types[type].file}.json`)
       .then(response => response.json())
       .then(data => {
         if (type === 'abilities') {
@@ -60,7 +42,7 @@ export default {
 
     query = query.toLowerCase()
 
-    return Object.keys(sources)
+    return Object.keys(types)
       .map(type => this.filter(type, query))
       .flat()
       .sort((a, b) => a.name.localeCompare(b.name))

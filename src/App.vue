@@ -12,6 +12,7 @@
 
 <script>
 import data from './srdData.js'
+import types from './types.js'
 
 import SearchInput from './components/SearchInput.vue'
 import SearchItem from './components/SearchItem.vue'
@@ -31,21 +32,6 @@ import Subrace from './components/content/Subrace.vue'
 import Trait from './components/content/Trait.vue'
 
 const showSize = 20
-
-const components = {
-  abilities: 'Ability',
-  classes: 'Class',
-  equipment: 'Equipment',
-  features: 'Feature',
-  languages: 'Language',
-  monsters: 'Monster',
-  proficiencies: 'Proficiency',
-  races: 'Race',
-  spells: 'Spell',
-  subclasses: 'Subclass',
-  subraces: 'Subrace',
-  traits: 'Trait'
-}
 
 export default {
 
@@ -132,7 +118,7 @@ export default {
     },
 
     componentType (type) {
-      return type in components ? components[type] : 'SearchItem'
+      return 'component' in types[type] ? types[type].component : 'SearchItem'
     }
   }
 }
