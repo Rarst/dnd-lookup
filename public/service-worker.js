@@ -26,6 +26,6 @@ workbox.routing.registerRoute(
 )
 
 workbox.routing.registerRoute(
-  new RegExp('/.*'),
+  new RegExp('/assets/.*'),
   new workbox.strategies.NetworkFirst()
 )
