@@ -1,20 +1,18 @@
 <template>
-  <div class="mt-3 border rounded-lg py-3 px-6 space-y-3">
-    <ItemHeader :item="item"></ItemHeader>
-    <p>{{ item.desc }}</p>
+  <ItemHeader :item="item"></ItemHeader>
+  <p>{{ item.desc }}</p>
 
-    <p><strong class="font-semibold">Race:</strong>
-      <ItemLink :linkTo="item.race.name"></ItemLink>
-    </p>
+  <p><strong class="font-semibold">Race:</strong>
+    <ItemLink :linkTo="item.race.name"></ItemLink>
+  </p>
 
-    <p>
-      <strong class="font-semibold">Ability bonuses:</strong>
-      <span v-for="bonus in item.ability_bonuses">{{ bonus.name + '+' + bonus.bonus }}</span>
-    </p>
+  <p>
+    <strong class="font-semibold">Ability bonuses:</strong>
+    <span v-for="bonus in item.ability_bonuses">{{ bonus.name + '+' + bonus.bonus }}</span>
+  </p>
 
-    <LinksSection :item="item" section="starting_proficiencies" header="Proficiencies"></LinksSection>
-    <LinksSection :item="item" section="racial_traits" header="Traits"></LinksSection>
-  </div>
+  <LinksSection :item="item" section="starting_proficiencies" header="Proficiencies"></LinksSection>
+  <LinksSection :item="item" section="racial_traits" header="Traits"></LinksSection>
 </template>
 
 <script>

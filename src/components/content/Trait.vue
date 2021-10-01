@@ -1,10 +1,8 @@
 <template>
-  <div class="mt-3 border rounded-lg py-3 px-6 space-y-3">
-    <ItemHeader :item="item"></ItemHeader>
-    <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
-    <LinksSection :item="item" section="races"></LinksSection>
-    <LinksSection :item="item" section="subraces"></LinksSection>
-  </div>
+  <ItemHeader :item="item"></ItemHeader>
+  <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
+  <LinksSection :item="item" section="races"></LinksSection>
+  <LinksSection :item="item" section="subraces"></LinksSection>
 </template>
 
 <script>

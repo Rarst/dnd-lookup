@@ -1,25 +1,23 @@
 <template>
-  <div class="mt-3 border rounded-lg py-3 px-6 space-y-3">
-    <ItemHeader :item="item"></ItemHeader>
-    <p><strong class="font-semibold">Hit Die:</strong> d{{ item.hit_die }}</p>
-    <p>
-      <strong class="font-semibold">Saving Throws Proficiencies:</strong>
-      {{ item.saving_throws.map(st => st.name).join(', ') }}
-    </p>
-    <!--    <p v-if="item.spellcasting.class" class="-ml-1"><item-link :linkTo="'Spellcasting ('+item.spellcasting.class+')'"></item-link></p>-->
-    <LinksSection :item="item" section="proficiencies"></LinksSection>
-    <div v-if="item.proficiency_choices.length">
-      <h3 class="font-bold">Proficiency options</h3>
-      <div v-for="option in item.proficiency_choices">
-        <h4 class="font-bold text-sm">Choose {{ option.choose }}</h4>
-        <p class="flex flex-wrap -ml-1">
-          <ItemLink v-for="link in option.from.map(o=>o.name)" :linkTo="link" :key="link"></ItemLink>
-        </p>
-      </div>
+  <ItemHeader :item="item"></ItemHeader>
+  <p><strong class="font-semibold">Hit Die:</strong> d{{ item.hit_die }}</p>
+  <p>
+    <strong class="font-semibold">Saving Throws Proficiencies:</strong>
+    {{ item.saving_throws.map(st => st.name).join(', ') }}
+  </p>
+  <!--    <p v-if="item.spellcasting.class" class="-ml-1"><item-link :linkTo="'Spellcasting ('+item.spellcasting.class+')'"></item-link></p>-->
+  <LinksSection :item="item" section="proficiencies"></LinksSection>
+  <div v-if="item.proficiency_choices.length">
+    <h3 class="font-bold">Proficiency options</h3>
+    <div v-for="option in item.proficiency_choices">
+      <h4 class="font-bold text-sm">Choose {{ option.choose }}</h4>
+      <p class="flex flex-wrap -ml-1">
+        <ItemLink v-for="link in option.from.map(o=>o.name)" :linkTo="link" :key="link"></ItemLink>
+      </p>
     </div>
-
-    <links-section :item="item" section="subclasses"></links-section>
   </div>
+
+  <links-section :item="item" section="subclasses"></links-section>
 </template>
 
 <script>

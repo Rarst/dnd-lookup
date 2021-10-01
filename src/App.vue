@@ -6,36 +6,22 @@
       <TypeLink v-for="type in types" :type="type" :key="type"></TypeLink>
     </div>
 
-    <component :is="componentType(item.search_type)" v-for="item in results" :item="item" :key="item.key"></component>
+    <SearchResult v-for="item in results" :item="item" :key="item.key"></SearchResult>
   </div>
 </template>
 
 <script>
 import data from './srdData.js'
-import types from './types.js'
 
 import SearchInput from './components/SearchInput.vue'
-import SearchItem from './components/SearchItem.vue'
+import SearchResult from './components/SearchResult.vue'
 import TypeLink from './components/TypeLink.vue'
-
-import Ability from './components/content/Ability.vue'
-import Class from './components/content/Class.vue'
-import Equipment from './components/content/Equipment.vue'
-import Feature from './components/content/Feature.vue'
-import Language from './components/content/Language.vue'
-import Monster from './components/content/Monster.vue'
-import Proficiency from './components/content/Proficiency.vue'
-import Race from './components/content/Race.vue'
-import Spell from './components/content/Spell.vue'
-import Subclass from './components/content/Subclass.vue'
-import Subrace from './components/content/Subrace.vue'
-import Trait from './components/content/Trait.vue'
 
 const showSize = 20
 
 export default {
 
-  components: { SearchInput, SearchItem, TypeLink, Ability, Class, Equipment, Feature, Language, Monster, Proficiency, Race, Spell, Subclass, Subrace, Trait },
+  components: { SearchInput, SearchResult, TypeLink },
 
   data () {
     return {
@@ -115,10 +101,6 @@ export default {
 
     focus () {
       this.$refs.input.focus()
-    },
-
-    componentType (type) {
-      return 'component' in types[type] ? types[type].component : 'SearchItem'
     }
   }
 }
