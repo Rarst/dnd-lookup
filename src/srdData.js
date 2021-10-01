@@ -56,7 +56,7 @@ export default {
     let filtered = []
     let duplicates = false
 
-    if (type === 'equipment') {
+    if (type === 'equipment' || type === 'magic items') {
       filtered = filtered.concat(
         rawData[type].filter(item => item.equipment_category.name.toLowerCase() === query)
       )

@@ -25,6 +25,10 @@ export default {
     file: 'Languages',
     component: 'Language'
   },
+  'magic items': {
+    file: 'Magic-Items',
+    component: 'MagicItem'
+  },
   'magic schools': {
     file: 'Magic-Schools'
   },

@@ -1,7 +1,7 @@
 <template>
   <ItemHeader :item="item"></ItemHeader>
   <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
-  <p><strong class="font-semibold">Cost:</strong> {{ item.cost.quantity }} {{ item.cost.unit }}</p>
+  <p v-if="item.cost"><strong class="font-semibold">Cost:</strong> {{ item.cost.quantity }} {{ item.cost.unit }}</p>
   <p v-if="item.weight"><strong class="font-semibold">Weight:</strong> {{ item.weight }} lb</p>
   <p v-if="item.speed"><strong class="font-semibold">Speed:</strong> {{ item.speed.quantity }} {{ item.speed.unit }}</p>
   <p v-if="item.capacity"><strong class="font-semibold">Capacity:</strong> {{ item.capacity.quantity }}</p>

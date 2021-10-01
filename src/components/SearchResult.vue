@@ -19,6 +19,7 @@ import Class from './content/Class.vue'
 import Equipment from './content/Equipment.vue'
 import Feature from './content/Feature.vue'
 import Language from './content/Language.vue'
+import MagicItem from './content/MagicItem.vue'
 import Monster from './content/Monster.vue'
 import Proficiency from './content/Proficiency.vue'
 import Race from './content/Race.vue'
@@ -28,7 +29,7 @@ import Subrace from './content/Subrace.vue'
 import Trait from './content/Trait.vue'
 
 export default {
-  components: { ItemHeader, Ability, Class, Equipment, Feature, Language, Monster, Proficiency, Race, Spell, Subclass, Subrace, Trait },
+  components: { ItemHeader, Ability, Class, Equipment, Feature, Language, MagicItem, Monster, Proficiency, Race, Spell, Subclass, Subrace, Trait },
   props: ['item'],
   methods: {
     getComponent (type) {
