@@ -1,7 +1,7 @@
 import types from './types.js'
 
 const rawData = {}
-const version = '8a43493cf40c34a590ed9082f5b0a9bdd309be3d'
+const version = 'b5801321f966a069396b166ab03d92be5f7beb95'
 
 export default {
 
