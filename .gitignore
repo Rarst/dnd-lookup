@@ -6,3 +6,5 @@ dist-ssr
 
 /5e-database
 *.pdf
+
+/output

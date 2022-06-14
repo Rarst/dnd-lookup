@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "codeceptjs run"
   },
   "dependencies": {
     "vue": "^3.2.19"
@@ -12,6 +13,8 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.3.6",
+    "codeceptjs": "^3.3.3",
+    "playwright": "^1.22.2",
     "postcss": "^8.3.8",
     "tailwindcss": "^2.2.16",
     "vite": "^2.6.0"
