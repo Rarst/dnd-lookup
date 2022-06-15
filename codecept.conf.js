@@ -1,3 +1,7 @@
+const { setHeadlessWhen } = require('@codeceptjs/configure')
+
+setHeadlessWhen(process.env.HEADLESS)
+
 exports.config = {
   tests: './tests/*_test.js',
   output: './output',
@@ -6,12 +10,10 @@ exports.config = {
       url: 'http://localhost:3000/',
       show: true,
       browser: 'chromium',
-      waitForNavigation: "networkidle"
+      waitForNavigation: 'networkidle'
     }
   },
-  include: {
-
-  },
+  include: {},
   bootstrap: null,
   mocha: {},
   name: 'dnd'
