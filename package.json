@@ -6,7 +6,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "test": "codeceptjs run",
-    "server-test": "start-server-and-test 'vite --host' 3000/index.html"
+    "server-test": "start-server-and-test dev http://127.0.0.1:3000/index.html"
   },
   "dependencies": {
     "vue": "^3.2.19"
