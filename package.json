@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "codeceptjs run"
+    "test": "codeceptjs run",
+    "server-test": "start-server-and-test 'vite --host' 3000/index.html"
   },
   "dependencies": {
     "vue": "^3.2.19"
@@ -16,6 +17,7 @@
     "codeceptjs": "^3.3.3",
     "playwright": "^1.22.2",
     "postcss": "^8.3.8",
+    "start-server-and-test": "^1.14.0",
     "tailwindcss": "^2.2.16",
     "vite": "^2.6.0"
   }
