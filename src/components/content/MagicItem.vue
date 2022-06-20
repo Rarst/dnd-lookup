@@ -5,15 +5,14 @@
     <strong class="font-semibold">Category:</strong>
     <ItemLink :linkTo="item.equipment_category.name"></ItemLink>
   </p>
-
 </template>
 
 <script>
-import ItemHeader from '../ItemHeader.vue'
-import ItemLink from '../ItemLink.vue'
+import ItemHeader from "../ItemHeader.vue";
+import ItemLink from "../ItemLink.vue";
 
 export default {
   components: { ItemLink, ItemHeader },
-  props: ['item']
-}
+  props: ["item"],
+};
 </script>

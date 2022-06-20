@@ -1,14 +1,18 @@
 <template>
-  <a class="font-semibold bg-gray-200 hover:bg-blue-100 hover:text-blue-600 py-1 px-2 m-1 rounded-lg" :href="'#'+link">{{ link }}</a>
+  <a
+    class="m-1 rounded-lg bg-gray-200 py-1 px-2 font-semibold hover:bg-blue-100 hover:text-blue-600"
+    :href="'#' + link"
+    >{{ link }}</a
+  >
 </template>
 
 <script>
 export default {
-  props: ['linkTo'],
+  props: ["linkTo"],
   computed: {
-    link () {
-      return this.linkTo.replace('Skill: ', '')
-    }
-  }
-}
+    link() {
+      return this.linkTo.replace("Skill: ", "");
+    },
+  },
+};
 </script>

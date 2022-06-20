@@ -25,3 +25,6 @@ jobs:
         run: npm run server-test
         env:
           HEADLESS: true
+
+     - name: Prettier
+       run: npm run check-style

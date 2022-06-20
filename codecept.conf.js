@@ -1,20 +1,20 @@
-const { setHeadlessWhen } = require('@codeceptjs/configure')
+const { setHeadlessWhen } = require("@codeceptjs/configure");
 
-setHeadlessWhen(process.env.HEADLESS)
+setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: './tests/*_test.js',
-  output: './output',
+  tests: "./tests/*_test.js",
+  output: "./output",
   helpers: {
     Playwright: {
-      url: 'http://localhost:3000/',
+      url: "http://localhost:3000/",
       show: true,
-      browser: 'chromium',
-      waitForNavigation: 'networkidle'
-    }
+      browser: "chromium",
+      waitForNavigation: "networkidle",
+    },
   },
   include: {},
   bootstrap: null,
   mocha: {},
-  name: 'dnd'
-}
+  name: "dnd",
+};

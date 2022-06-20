@@ -1,69 +1,69 @@
 export default {
   abilities: {
-    file: 'Ability-Scores',
-    component: 'Ability'
+    file: "Ability-Scores",
+    component: "Ability",
   },
   classes: {
-    file: 'Classes',
-    component: 'Class'
+    file: "Classes",
+    component: "Class",
   },
   conditions: {
-    file: 'Conditions'
+    file: "Conditions",
   },
-  'damage types': {
-    file: 'Damage-Types'
+  "damage types": {
+    file: "Damage-Types",
   },
   equipment: {
-    file: 'Equipment',
-    component: 'Equipment'
+    file: "Equipment",
+    component: "Equipment",
   },
   features: {
-    file: 'Features',
-    component: 'Feature'
+    file: "Features",
+    component: "Feature",
   },
   languages: {
-    file: 'Languages',
-    component: 'Language'
+    file: "Languages",
+    component: "Language",
   },
-  'magic items': {
-    file: 'Magic-Items',
-    component: 'MagicItem'
+  "magic items": {
+    file: "Magic-Items",
+    component: "MagicItem",
   },
-  'magic schools': {
-    file: 'Magic-Schools'
+  "magic schools": {
+    file: "Magic-Schools",
   },
   monsters: {
-    file: 'Monsters',
-    component: 'Monster'
+    file: "Monsters",
+    component: "Monster",
   },
   proficiencies: {
-    file: 'Proficiencies',
-    component: 'Proficiency'
+    file: "Proficiencies",
+    component: "Proficiency",
   },
   properties: {
-    file: 'Weapon-Properties'
+    file: "Weapon-Properties",
   },
   races: {
-    file: 'Races',
-    component: 'Race'
+    file: "Races",
+    component: "Race",
   },
   skills: {
-    file: 'Skills'
+    file: "Skills",
   },
   spells: {
-    file: 'Spells',
-    component: 'Spell'
+    file: "Spells",
+    component: "Spell",
   },
   subclasses: {
-    file: 'Subclasses',
-    component: 'Subclass'
+    file: "Subclasses",
+    component: "Subclass",
   },
   subraces: {
-    file: 'Subraces',
-    component: 'Subrace'
+    file: "Subraces",
+    component: "Subrace",
   },
   traits: {
-    file: 'Traits',
-    component: 'Trait'
-  }
-}
+    file: "Traits",
+    component: "Trait",
+  },
+};
