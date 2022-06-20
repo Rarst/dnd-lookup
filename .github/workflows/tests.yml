@@ -26,5 +26,5 @@ jobs:
         env:
           HEADLESS: true
 
-     - name: Prettier
-       run: npm run check-style
+      - name: Prettier
+        run: npm run check-style
