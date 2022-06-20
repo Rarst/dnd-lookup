@@ -5,7 +5,7 @@
     "dev":         "vite",
     "build":       "vite build",
     "serve":       "vite preview",
-    "check-style": "prettier --check ./index.html ./tests/*.js ./src/**/*.{js,vue}",
+    "check-style": "prettier --check ./index.html ./tests/*.js ./src/**/*.{css,js,vue}",
     "test":        "codeceptjs run",
     "server-test": "start-server-and-test dev http://127.0.0.1:3000/index.html"
   },
