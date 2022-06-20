@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c2b8afa6-61cc-49a9-9e57-39d8276aa96f/deploy-status)](https://app.netlify.com/sites/dnd-rarst/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c2b8afa6-61cc-49a9-9e57-39d8276aa96f/deploy-status)](https://app.netlify.com/sites/dnd-lookup/deploys)
 [![Tests Status](https://github.com/rarst/dnd-lookup/actions/workflows/tests.yml/badge.svg)](https://github.com/Rarst/dnd-lookup/actions/workflows/tests.yml)
 
 # [D&D Lookup](https://dnd.rarst.net/)
