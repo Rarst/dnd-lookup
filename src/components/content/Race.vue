@@ -6,7 +6,7 @@
   <p>
     <strong class="font-semibold">Ability bonuses: </strong>
     <span v-for="bonus in item.ability_bonuses">
-      {{ bonus.ability_score.name }}+{{ bonus.bonus }}</span
+      &nbsp;{{ bonus.ability_score.name }} +{{ bonus.bonus }}</span
     >
   </p>
 
@@ -15,7 +15,7 @@
       >Ability options (choose {{ item.ability_bonus_options.choose }}):</strong
     >
     <span v-for="bonus in item.ability_bonus_options.from">
-      {{ bonus.name + "+" + bonus.bonus }}</span
+      &nbsp;{{ bonus.ability_score.name + " +" + bonus.bonus }}</span
     >
   </p>
 

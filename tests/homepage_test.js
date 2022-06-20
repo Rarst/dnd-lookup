@@ -28,5 +28,6 @@ Scenario("test homepage", ({ I }) => {
     I.pressKey("Escape");
     I.click(link);
     I.see(header);
+    I.dontSee("undefined");
   }
 });

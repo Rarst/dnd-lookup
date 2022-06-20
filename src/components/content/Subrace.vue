@@ -9,9 +9,9 @@
 
   <p>
     <strong class="font-semibold">Ability bonuses:</strong>
-    <span v-for="bonus in item.ability_bonuses">{{
-      bonus.name + "+" + bonus.bonus
-    }}</span>
+    <span v-for="bonus in item.ability_bonuses"
+      >&nbsp;{{ bonus.ability_score.name + " +" + bonus.bonus }}</span
+    >
   </p>
 
   <LinksSection
