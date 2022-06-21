@@ -28,6 +28,13 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
+  new RegExp(".*fonts.bunny.*"),
+  new workbox.strategies.NetworkFirst({
+    cacheName: "fonts-bunny",
+  })
+);
+
+workbox.routing.registerRoute(
   new RegExp("/assets/.*"),
   new workbox.strategies.NetworkFirst()
 );
