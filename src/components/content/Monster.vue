@@ -31,7 +31,7 @@
 
     <hr class="clip-triangle-right h-1 bg-red-900" />
 
-    <div class="flex justify-between text-center">
+    <div class="flex justify-between px-3 text-center">
       <span
         ><strong class="font-semibold">STR</strong><br />{{ item.strength }} ({{
           modifier(item.strength)
