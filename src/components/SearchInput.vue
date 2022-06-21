@@ -10,7 +10,7 @@
       :disabled="loading"
       :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="border-3 w-full rounded-full border-4 border-stone-200 bg-stone-100 py-2 px-6 placeholder-stone-600 outline-none focus:border-stone-300"
+      class="border-3 w-full rounded-full border-4 border-stone-200 bg-stone-100 py-2 pl-4 pr-10 placeholder-stone-600 outline-none focus:border-stone-300"
       type="text"
       id="search"
     />
