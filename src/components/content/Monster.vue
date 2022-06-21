@@ -109,7 +109,7 @@
     <hr class="clip-triangle-right h-1 bg-red-900" />
   </div>
 
-  <p v-for="ability in item.special_abilities">
+  <p class="font-sans" v-for="ability in item.special_abilities">
     <strong class="font-semibold"
       >{{ ability.name
       }}<span v-if="ability.dc">
