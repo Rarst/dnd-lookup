@@ -9,16 +9,18 @@
 
     <div
       v-show="!results.length"
-      class="mt-3 flex flex-wrap justify-center px-6 text-lg"
+      class="mt-3 flex flex-wrap justify-center px-6"
     >
       <TypeLink v-for="type in types" :type="type" :key="type"></TypeLink>
     </div>
 
-    <SearchResult
-      v-for="item in results"
-      :item="item"
-      :key="item.key"
-    ></SearchResult>
+    <div class="mt-6 space-y-6">
+      <SearchResult
+        v-for="item in results"
+        :item="item"
+        :key="item.key"
+      ></SearchResult>
+    </div>
   </div>
 </template>
 

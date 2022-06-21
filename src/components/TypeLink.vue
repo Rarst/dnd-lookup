@@ -1,6 +1,6 @@
 <template>
   <a
-    class="rounded-lg py-1 px-2 font-semibold text-gray-600 hover:bg-blue-100 hover:text-blue-600"
+    class="rounded-lg py-1 px-2 font-semibold text-stone-600 transition-colors duration-100 hover:bg-red-100 hover:text-red-700"
     :href="href"
     >{{ type }}</a
   >

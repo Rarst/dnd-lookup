@@ -10,14 +10,14 @@
       :disabled="loading"
       :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="w-full rounded-full border border-gray-600 py-2 px-6 placeholder-gray-600 outline-none focus:border-blue-300"
+      class="border-3 w-full rounded-full border-4 border-stone-200 bg-stone-100 py-2 px-6 placeholder-stone-600 outline-none focus:border-stone-300"
       type="text"
       id="search"
     />
     <button
       v-show="modelValue"
       @click="$emit('clear')"
-      class="absolute right-0 mr-1 rounded-full p-2 text-gray-600 hover:bg-red-200 hover:text-red-800 focus:outline-none"
+      class="absolute right-1 mr-1 rounded-full p-2 text-gray-600 transition-colors duration-100 hover:bg-red-100 hover:text-red-700 focus:outline-none"
       title="Clear (Esc)"
     >
       <svg

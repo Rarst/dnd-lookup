@@ -35,7 +35,7 @@
   <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
 
   <div v-if="item.higher_level">
-    <h3 class="font-bold">Higher level</h3>
+    <h3 class="text-xl font-bold">Higher level</h3>
     <p v-for="paragraph in item.higher_level">{{ paragraph }}</p>
   </div>
 

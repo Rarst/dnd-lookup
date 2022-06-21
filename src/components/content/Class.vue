@@ -8,9 +8,9 @@
   <!--    <p v-if="item.spellcasting.class" class="-ml-1"><item-link :linkTo="'Spellcasting ('+item.spellcasting.class+')'"></item-link></p>-->
   <LinksSection :item="item" section="proficiencies"></LinksSection>
   <div v-if="item.proficiency_choices.length">
-    <h3 class="font-bold">Proficiency options</h3>
+    <h3 class="text-xl font-bold">Proficiency options</h3>
     <div v-for="option in item.proficiency_choices">
-      <h4 class="text-sm font-bold">Choose {{ option.choose }}</h4>
+      <h4 class="font-bold">Choose {{ option.choose }}</h4>
       <p class="-ml-1 flex flex-wrap">
         <ItemLink
           v-for="link in option.from.map((o) => o.name)"

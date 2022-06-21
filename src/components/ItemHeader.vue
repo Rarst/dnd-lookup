@@ -1,6 +1,10 @@
 <template>
-  <div class="flex items-center justify-between text-lg font-bold">
-    <h2 class="font-serif text-2xl">{{ headerText }}</h2>
+  <div
+    class="flex items-center justify-between border-b-4 border-stone-200 font-bold"
+  >
+    <h2 class="font-serif-sc text-2xl text-red-800">
+      {{ headerText }}
+    </h2>
     <TypeLink :type="item.search_type"></TypeLink>
   </div>
 </template>

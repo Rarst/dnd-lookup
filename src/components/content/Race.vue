@@ -26,7 +26,7 @@
   </p>
 
   <div>
-    <h3 class="font-bold">Languages</h3>
+    <h3 class="text-xl font-bold">Languages</h3>
     <p>{{ item.language_desc }}</p>
     <LinksSection :item="item" section="languages" header=""></LinksSection>
   </div>
@@ -38,7 +38,7 @@
   ></LinksSection>
 
   <div v-if="item.starting_proficiency_options">
-    <h3 class="font-bold">
+    <h3 class="text-xl font-bold">
       Proficiency options (choose
       {{ item.starting_proficiency_options.choose }})
     </h3>

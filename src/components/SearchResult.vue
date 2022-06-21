@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3 space-y-3 rounded-lg border py-3 px-6">
+  <div class="space-y-3">
     <component
       v-if="getComponent(item.search_type)"
       :is="getComponent(item.search_type)"
