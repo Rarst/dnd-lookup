@@ -1,6 +1,6 @@
 <template>
   <div v-if="destinations.length">
-    <h3 v-if="'' !== header" class="text-xl font-bold">{{ headerText }}</h3>
+    <h3 v-if="'' !== header" class="text-lg font-bold">{{ headerText }}</h3>
     <p class="-ml-1 flex flex-wrap">
       <ItemLink
         v-for="link in destinations"

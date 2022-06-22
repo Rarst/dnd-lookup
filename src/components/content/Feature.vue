@@ -14,14 +14,27 @@
     <span v-html="prerequisite(req)"></span>
   </p>
   <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
+  <LinksSection
+    v-if="item.feature_specific && item.feature_specific.expertise_options"
+    :item="item.feature_specific.expertise_options"
+    :header="`Choose ${item.feature_specific.expertise_options.choose}`"
+    section="from"
+  />
+  <LinksSection
+    v-if="item.feature_specific && item.feature_specific.subfeature_options"
+    :item="item.feature_specific.subfeature_options"
+    :header="`Choose ${item.feature_specific.subfeature_options.choose}`"
+    section="from"
+  />
 </template>
 
 <script>
 import ItemHeader from "../ItemHeader.vue";
 import ItemLink from "../ItemLink.vue";
+import LinksSection from "../LinksSection.vue";
 
 export default {
-  components: { ItemLink, ItemHeader },
+  components: { LinksSection, ItemLink, ItemHeader },
   props: ["item"],
   methods: {
     prerequisite(req) {
