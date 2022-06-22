@@ -28,6 +28,15 @@
     <strong class="font-semibold">Vehicle category:</strong>
     {{ item.vehicle_category }}
   </p>
+  <div class="space-y-0" v-if="item.contents">
+    <h3 class="text-lg font-bold">Contents</h3>
+    <ul class="list-disc">
+      <li v-for="contentsItem in item.contents">
+        {{ contentsItem.quantity > 1 ? `${contentsItem.quantity}x ` : "" }}
+        {{ contentsItem.item.name }}
+      </li>
+    </ul>
+  </div>
   <p>
     <strong class="font-semibold">Category:</strong>
     <ItemLink :linkTo="item.equipment_category.name"></ItemLink>
