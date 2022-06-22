@@ -197,6 +197,10 @@ export default {
         return ` (${usage.times}/Day)`;
       }
 
+      if ("recharge after rest" === usage.type) {
+        return ` (Recharges after a ${usage.rest_types.join(" or ")} rest)`;
+      }
+
       return ` (${usage.type})`;
     },
   },
