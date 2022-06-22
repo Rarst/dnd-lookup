@@ -3,6 +3,7 @@ Feature("homepage");
 Scenario("test homepage", ({ I }) => {
   const content = {
     abilities: "Charisma",
+    alignments: "Chaotic Evil",
     classes: "Barbarian",
     conditions: "Blinded",
     "damage types": "Acid",

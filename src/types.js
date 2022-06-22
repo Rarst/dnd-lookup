@@ -3,6 +3,9 @@ export default {
     file: "Ability-Scores",
     component: "Ability",
   },
+  alignments: {
+    file: "Alignments",
+  },
   classes: {
     file: "Classes",
     component: "Class",
