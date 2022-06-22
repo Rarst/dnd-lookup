@@ -116,6 +116,7 @@
       >{{ ability.name
       }}<span v-if="ability.dc">
         ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
+      ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
       >.</strong
     >
     {{ ability.desc }}
@@ -126,8 +127,7 @@
   <p class="font-sans" v-for="action in item.actions">
     <strong class="font-semibold"
       >{{ action.name
-      }}<span v-if="action.usage">
-        ({{ action.usage.times }} {{ action.usage.type }})</span
+      }}<span v-if="action.usage">{{ usage(action.usage) }}</span
       >.</strong
     >
     {{ action.desc }}
@@ -187,6 +187,17 @@ export default {
       const modifier = Math.floor((score - 10) / 2);
       const sign = modifier >= 0 ? "+" : "";
       return sign + modifier;
+    },
+    usage(usage) {
+      if ("recharge on roll" === usage.type) {
+        return ` (Recharge ${usage.min_value}-${usage.dice.split("d")[1]})`;
+      }
+
+      if ("per day" === usage.type) {
+        return ` (${usage.times}/Day)`;
+      }
+
+      return ` (${usage.type})`;
     },
   },
 };
