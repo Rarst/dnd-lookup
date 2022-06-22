@@ -98,8 +98,10 @@
         {{ value }}</span
       >
     </p>
-    <p v-if="item.languages">
-      <strong class="font-semibold">Languages</strong> {{ item.languages }}
+    <p>
+      <strong class="font-semibold">Languages</strong>
+      <span v-if="item.languages">&nbsp;&nbsp;{{ item.languages }}</span>
+      <span v-else>&nbsp;&nbsp;—</span>
     </p>
     <p>
       <strong class="font-semibold">Challenge</strong>
