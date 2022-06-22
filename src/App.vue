@@ -14,7 +14,7 @@
       <TypeLink v-for="type in types" :type="type" :key="type"></TypeLink>
     </div>
 
-    <div class="mt-6 space-y-6">
+    <div v-show="results.length" class="mt-6 space-y-6">
       <SearchResult
         v-for="item in results"
         :item="item"
