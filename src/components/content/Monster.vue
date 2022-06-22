@@ -105,7 +105,7 @@
     </p>
     <p>
       <strong class="font-semibold">Challenge</strong>
-      {{ item.challenge_rating }}
+      {{ item.challenge_rating }} ({{ xp }} XP)
     </p>
 
     <hr class="clip-triangle-right h-1 bg-red-900" />
@@ -175,6 +175,10 @@ export default {
         .filter((p) => p.proficiency.name.includes("Skill: "))
         .map((p) => `${p.proficiency.name.replace("Skill: ", "")} +${p.value}`)
         .join(", ");
+    },
+
+    xp() {
+      return new Intl.NumberFormat().format(this.item.xp);
     },
   },
 
