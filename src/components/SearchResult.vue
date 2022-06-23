@@ -29,6 +29,7 @@ import MagicItem from "./content/MagicItem.vue";
 import Monster from "./content/Monster.vue";
 import Proficiency from "./content/Proficiency.vue";
 import Race from "./content/Race.vue";
+import Rule from "./content/Rule.vue";
 import Spell from "./content/Spell.vue";
 import Subclass from "./content/Subclass.vue";
 import Subrace from "./content/Subrace.vue";
@@ -46,6 +47,7 @@ export default {
     Monster,
     Proficiency,
     Race,
+    Rule,
     Spell,
     Subclass,
     Subrace,

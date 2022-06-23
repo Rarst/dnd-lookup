@@ -50,6 +50,14 @@ export default {
     file: "Races",
     component: "Race",
   },
+  "rules index": {
+    file: "Rules",
+    component: "Rule",
+  },
+  rules: {
+    file: "Rule-Sections",
+    component: "Rule",
+  },
   skills: {
     file: "Skills",
   },

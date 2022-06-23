@@ -16,6 +16,8 @@ Scenario("test homepage", ({ I }) => {
     proficiencies: "All armor",
     properties: "Ammunition",
     races: "Dragonborn",
+    rules: "Ability Checks",
+    "rules index": "Adventuring",
     skills: "Acrobatics",
     spells: "Acid Arrow",
     subclasses: "Berserker Barbarian",

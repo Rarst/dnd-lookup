@@ -14,7 +14,15 @@ module.exports = {
           ...defaultTheme.fontFamily.serif,
         ],
       },
+      typography: ({ theme }) => ({
+        stone: {
+          css: {
+            "--tw-prose-body": theme("colors.black"),
+            "--tw-prose-headings": theme("colors.black"),
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
