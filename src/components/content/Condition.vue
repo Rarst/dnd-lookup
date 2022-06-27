@@ -3,7 +3,7 @@
     <ItemHeader :item="item"></ItemHeader>
     <div
       v-html="content"
-      class="prose prose-stone max-w-none prose-p:leading-normal prose-ol:-ml-8 prose-ul:-ml-8 prose-li:leading-normal"
+      class="prose prose-stone max-w-none prose-p:leading-normal prose-li:leading-normal prose-ol:sm:-ml-8 prose-ul:sm:-ml-8"
     ></div>
   </div>
 </template>

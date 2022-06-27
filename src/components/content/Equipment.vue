@@ -30,7 +30,7 @@
   </p>
   <div class="space-y-0" v-if="item.contents">
     <h3>Contents</h3>
-    <ul class="list-disc">
+    <ul class="list-inside list-disc marker:text-stone-300 sm:list-outside">
       <li v-for="contentsItem in item.contents">
         {{ contentsItem.quantity > 1 ? `${contentsItem.quantity}x ` : "" }}
         {{ contentsItem.item.name }}
