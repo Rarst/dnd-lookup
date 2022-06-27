@@ -22,6 +22,7 @@ import ItemHeader from "./ItemHeader.vue";
 
 import Ability from "./content/Ability.vue";
 import Class from "./content/Class.vue";
+import Condition from "./content/Condition.vue";
 import Equipment from "./content/Equipment.vue";
 import Feature from "./content/Feature.vue";
 import Language from "./content/Language.vue";
@@ -40,6 +41,7 @@ export default {
     ItemHeader,
     Ability,
     Class,
+    Condition,
     Equipment,
     Feature,
     Language,

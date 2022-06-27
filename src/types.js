@@ -12,6 +12,7 @@ export default {
   },
   conditions: {
     file: "Conditions",
+    component: "Condition",
   },
   "damage types": {
     file: "Damage-Types",
