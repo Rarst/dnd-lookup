@@ -136,6 +136,13 @@
   <template v-if="item.legendary_actions">
     <h3 class="border-b-2 border-stone-200 font-sans">Legendary Actions</h3>
 
+    <p class="font-sans">
+      The {{ item.name }} can take 3 legendary actions, choosing from the
+      options below. Only one legendary action option can be used at a time and
+      only at the end of another creature’s turn. The {{ item.name }} regains
+      spent legendary actions at the start of its turn.
+    </p>
+
     <p class="font-sans" v-for="action in item.legendary_actions">
       <strong class="font-semibold">{{ action.name }}.</strong>
       {{ action.desc }}
