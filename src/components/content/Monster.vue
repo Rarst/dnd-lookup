@@ -122,7 +122,7 @@
     {{ ability.desc }}
   </p>
 
-  <h3 class="border-b-2 border-stone-200 text-xl font-semibold">Actions</h3>
+  <h3 class="border-b-2 border-stone-200 font-sans">Actions</h3>
 
   <p class="font-sans" v-for="action in item.actions">
     <strong class="font-semibold"
@@ -134,9 +134,8 @@
   </p>
 
   <template v-if="item.legendary_actions">
-    <h3 class="border-b-2 border-stone-200 text-xl font-semibold">
-      Legendary Actions
-    </h3>
+    <h3 class="border-b-2 border-stone-200 font-sans">Legendary Actions</h3>
+
     <p class="font-sans" v-for="action in item.legendary_actions">
       <strong class="font-semibold">{{ action.name }}.</strong>
       {{ action.desc }}

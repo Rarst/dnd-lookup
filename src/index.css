@@ -16,6 +16,14 @@
       1.625rem
     );
   }
+
+  h3 {
+    @apply text-xl font-bold;
+  }
+
+  h4 {
+    @apply text-lg font-bold;
+  }
 }
 
 @layer utilities {
