@@ -24,6 +24,11 @@
   h4 {
     @apply text-lg font-bold;
   }
+
+  h5,
+  h6 {
+    @apply font-bold;
+  }
 }
 
 @layer utilities {
