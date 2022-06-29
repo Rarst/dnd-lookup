@@ -126,20 +126,20 @@
       <ol class="font-sans sm:list-decimal" start="0">
         <li v-if="spellsOfLevel(ability.spellcasting.spells, 0).length">
           Cantrips (at will):
-          <template
+          <ItemLink
             v-for="spell in spellsOfLevel(ability.spellcasting.spells, 0)"
-            ><ItemLink :linkTo="spell"
-          /></template>
+            :linkTo="spell"
+          />
         </li>
         <li v-for="(count, level) in ability.spellcasting.slots">
           Level {{ level }} (slots {{ count }}):
-          <template
+          <ItemLink
             v-for="spell in spellsOfLevel(
               ability.spellcasting.spells,
               parseInt(level)
             )"
-            ><ItemLink :linkTo="spell" />
-          </template>
+            :linkTo="spell"
+          />
         </li>
       </ol>
     </template>
