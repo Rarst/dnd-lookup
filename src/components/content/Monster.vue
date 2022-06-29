@@ -111,16 +111,57 @@
     <hr class="clip-triangle-right h-1 bg-red-900" />
   </div>
 
-  <p class="font-sans" v-for="ability in item.special_abilities">
-    <strong class="font-semibold"
-      >{{ ability.name
-      }}<span v-if="ability.dc">
-        ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
-      ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
-      >.</strong
-    >
-    {{ ability.desc }}
-  </p>
+  <template v-for="ability in item.special_abilities">
+    <template v-if="ability.name === 'Spellcasting'">
+      <p class="font-sans">
+        <strong class="font-semibold">{{ ability.name }}.</strong>
+        The {{ item.name }} is an {{ ability.spellcasting.level }}th-level
+        spellcaster. Its spellcasting ability is
+        {{ ability.spellcasting.ability.name }} (spell save DC
+        {{ ability.spellcasting.dc }}, +{{ ability.spellcasting.modifier }} to
+        hit with spell attacks). The {{ item.name }} has the following
+        {{ ability.spellcasting.school }}
+        spells prepared:
+      </p>
+      <ol class="space-y-1 font-sans sm:list-outside sm:list-decimal" start="0">
+        <li
+          class="leading-loose"
+          v-if="spellsOfLevel(ability.spellcasting.spells, 0).length"
+        >
+          Cantrips (at will):
+          <template
+            v-for="spell in spellsOfLevel(ability.spellcasting.spells, 0)"
+            ><ItemLink class="font-serif" :linkTo="spell"
+          /></template>
+        </li>
+        <li
+          class="leading-loose"
+          v-for="(count, level) in ability.spellcasting.slots"
+        >
+          Level {{ level }} (slots {{ count }}):
+          <template
+            v-for="spell in spellsOfLevel(
+              ability.spellcasting.spells,
+              parseInt(level)
+            )"
+            ><ItemLink class="font-serif" :linkTo="spell" />
+          </template>
+        </li>
+      </ol>
+    </template>
+    <template v-else>
+      <p class="font-sans">
+        <strong class="font-semibold"
+          >{{ ability.name
+          }}<span v-if="ability.dc">
+            ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
+          ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
+          >.</strong
+        >
+        {{ ability.desc }}
+      </p>
+    </template>
+  </template>
 
   <h3 class="border-b-2 border-stone-200 font-sans">Actions</h3>
 
@@ -152,9 +193,10 @@
 
 <script>
 import ItemHeader from "../ItemHeader.vue";
+import ItemLink from "../ItemLink.vue";
 
 export default {
-  components: { ItemHeader },
+  components: { ItemLink, ItemHeader },
 
   props: ["item"],
 
@@ -208,6 +250,16 @@ export default {
       }
 
       return ` (${usage.type})`;
+    },
+    spellsOfLevel(spells, level) {
+      let result = [];
+
+      for (let spell of spells) {
+        if (spell.level === level) {
+          result.push(spell.name);
+        }
+      }
+      return result;
     },
   },
 };
