@@ -123,28 +123,22 @@
         {{ ability.spellcasting.school }}
         spells prepared:
       </p>
-      <ol class="space-y-1 font-sans sm:list-outside sm:list-decimal" start="0">
-        <li
-          class="leading-loose"
-          v-if="spellsOfLevel(ability.spellcasting.spells, 0).length"
-        >
+      <ol class="font-sans sm:list-decimal" start="0">
+        <li v-if="spellsOfLevel(ability.spellcasting.spells, 0).length">
           Cantrips (at will):
           <template
             v-for="spell in spellsOfLevel(ability.spellcasting.spells, 0)"
-            ><ItemLink class="font-serif" :linkTo="spell"
+            ><ItemLink :linkTo="spell"
           /></template>
         </li>
-        <li
-          class="leading-loose"
-          v-for="(count, level) in ability.spellcasting.slots"
-        >
+        <li v-for="(count, level) in ability.spellcasting.slots">
           Level {{ level }} (slots {{ count }}):
           <template
             v-for="spell in spellsOfLevel(
               ability.spellcasting.spells,
               parseInt(level)
             )"
-            ><ItemLink class="font-serif" :linkTo="spell" />
+            ><ItemLink :linkTo="spell" />
           </template>
         </li>
       </ol>
