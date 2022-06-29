@@ -117,7 +117,7 @@
         <strong class="font-semibold">{{ ability.name }}.</strong>
         The {{ item.name }} is an {{ ability.spellcasting.level }}th-level
         spellcaster. Its spellcasting ability is
-        {{ ability.spellcasting.ability.name }} (spell save DC
+        {{ abilityFromShort(ability.spellcasting.ability.name) }} (spell save DC
         {{ ability.spellcasting.dc }}, +{{ ability.spellcasting.modifier }} to
         hit with spell attacks). The {{ item.name }} has the following
         {{ ability.spellcasting.school }}
@@ -225,6 +225,16 @@ export default {
   },
 
   methods: {
+    abilityFromShort(ability) {
+      const names = {
+        CHA: "charisma",
+        INT: "intelligence",
+        WIS: "wisdom",
+      };
+
+      return names[ability];
+    },
+
     modifier(score) {
       const modifier = Math.floor((score - 10) / 2);
       const sign = modifier >= 0 ? "+" : "";
