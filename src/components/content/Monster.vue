@@ -230,6 +230,7 @@ export default {
       const sign = modifier >= 0 ? "+" : "";
       return sign + modifier;
     },
+
     usage(usage) {
       if ("recharge on roll" === usage.type) {
         return ` (Recharge ${usage.min_value}-${usage.dice.split("d")[1]})`;
@@ -245,15 +246,11 @@ export default {
 
       return ` (${usage.type})`;
     },
-    spellsOfLevel(spells, level) {
-      let result = [];
 
-      for (let spell of spells) {
-        if (spell.level === level) {
-          result.push(spell.name);
-        }
-      }
-      return result;
+    spellsOfLevel(spells, level) {
+      return spells
+        .filter((spell) => spell.level === level)
+        .map((spell) => spell.name);
     },
   },
 };
