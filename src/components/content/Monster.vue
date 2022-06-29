@@ -115,29 +115,20 @@
     <template v-if="ability.name === 'Spellcasting'">
       <p class="font-sans">
         <strong class="font-semibold">{{ ability.name }}.</strong>
-        The {{ item.name }} is an {{ ability.spellcasting.level }}th-level
-        spellcaster. Its spellcasting ability is
-        {{ abilityFromShort(ability.spellcasting.ability.name) }} (spell save DC
-        {{ ability.spellcasting.dc }}, +{{ ability.spellcasting.modifier }} to
-        hit with spell attacks). The {{ item.name }} has the following
-        {{ ability.spellcasting.school }}
-        spells prepared:
+        The {{ item.name }} is an {{ sc.level }}th-level spellcaster. Its
+        spellcasting ability is {{ abilityFull(sc.ability.name) }} (spell save
+        DC {{ sc.dc }}, +{{ sc.modifier }} to hit with spell attacks). The
+        {{ item.name }} has the following {{ sc.school }} spells prepared:
       </p>
       <ol class="font-sans sm:list-decimal" start="0">
-        <li v-if="spellsOfLevel(ability.spellcasting.spells, 0).length">
+        <li v-if="spellsLevel(0).length">
           Cantrips (at will):
-          <ItemLink
-            v-for="spell in spellsOfLevel(ability.spellcasting.spells, 0)"
-            :linkTo="spell"
-          />
+          <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell" />
         </li>
-        <li v-for="(count, level) in ability.spellcasting.slots">
+        <li v-for="(count, level) in sc.slots">
           Level {{ level }} (slots {{ count }}):
           <ItemLink
-            v-for="spell in spellsOfLevel(
-              ability.spellcasting.spells,
-              parseInt(level)
-            )"
+            v-for="spell in spellsLevel(parseInt(level))"
             :linkTo="spell"
           />
         </li>
@@ -219,20 +210,26 @@ export default {
         .join(", ");
     },
 
+    sc() {
+      return this.item.special_abilities.filter(
+        (ability) => ability.name === "Spellcasting"
+      )[0].spellcasting;
+    },
+
     xp() {
       return new Intl.NumberFormat().format(this.item.xp);
     },
   },
 
   methods: {
-    abilityFromShort(ability) {
+    abilityFull(abilityShort) {
       const names = {
         CHA: "charisma",
         INT: "intelligence",
         WIS: "wisdom",
       };
 
-      return names[ability];
+      return names[abilityShort];
     },
 
     modifier(score) {
@@ -257,8 +254,8 @@ export default {
       return ` (${usage.type})`;
     },
 
-    spellsOfLevel(spells, level) {
-      return spells
+    spellsLevel(level) {
+      return this.sc.spells
         .filter((spell) => spell.level === level)
         .map((spell) => spell.name);
     },
