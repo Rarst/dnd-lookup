@@ -12,18 +12,16 @@
   <div class="space-y-1 font-sans">
     <hr class="clip-triangle-right h-1 bg-red-900" />
 
+    <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
     <p>
-      <strong class="font-semibold">Armor Class</strong> {{ item.armor_class }}
-    </p>
-    <p>
-      <strong class="font-semibold">Hit Points</strong>
+      <strong>Hit Points</strong>
       {{ item.hit_points }} ({{ item.hit_dice
       }}<span v-if="hitBonus">
         {{ hitBonus > 0 ? "+" : "-" }} {{ Math.abs(hitBonus) }}</span
       >)
     </p>
     <p>
-      <strong class="font-semibold">Speed </strong>
+      <strong>Speed </strong>
       <span v-for="(value, type, index) in item.speed">
         <span v-if="index != 0">, </span>{{ type }} {{ value }}</span
       >
@@ -33,35 +31,32 @@
 
     <div class="flex justify-between px-3 text-center">
       <span
-        ><strong class="font-semibold">STR</strong><br />{{ item.strength }} ({{
+        ><strong>STR</strong><br />{{ item.strength }} ({{
           modifier(item.strength)
         }})</span
       >
       <span
-        ><strong class="font-semibold">DEX</strong><br />{{
-          item.dexterity
-        }}
-        ({{ modifier(item.dexterity) }})</span
+        ><strong>DEX</strong><br />{{ item.dexterity }} ({{
+          modifier(item.dexterity)
+        }})</span
       >
       <span
-        ><strong class="font-semibold">CON</strong><br />{{
-          item.constitution
-        }}
-        ({{ modifier(item.constitution) }})</span
+        ><strong>CON</strong><br />{{ item.constitution }} ({{
+          modifier(item.constitution)
+        }})</span
       >
       <span
-        ><strong class="font-semibold">INT</strong><br />{{
-          item.intelligence
-        }}
-        ({{ modifier(item.intelligence) }})</span
+        ><strong>INT</strong><br />{{ item.intelligence }} ({{
+          modifier(item.intelligence)
+        }})</span
       >
       <span
-        ><strong class="font-semibold">WIS</strong><br />{{ item.wisdom }} ({{
+        ><strong>WIS</strong><br />{{ item.wisdom }} ({{
           modifier(item.wisdom)
         }})</span
       >
       <span
-        ><strong class="font-semibold">CHA</strong><br />{{ item.charisma }} ({{
+        ><strong>CHA</strong><br />{{ item.charisma }} ({{
           modifier(item.charisma)
         }})</span
       >
@@ -69,42 +64,38 @@
 
     <hr class="clip-triangle-right h-1 bg-red-900" />
 
-    <p v-if="savingThrows">
-      <strong class="font-semibold">Saving Throws</strong> {{ savingThrows }}
-    </p>
-    <p v-if="skills">
-      <strong class="font-semibold">Skills</strong> {{ skills }}
-    </p>
+    <p v-if="savingThrows"><strong>Saving Throws</strong> {{ savingThrows }}</p>
+    <p v-if="skills"><strong>Skills</strong> {{ skills }}</p>
     <p v-if="item.damage_vulnerabilities.length">
-      <strong class="font-semibold">Damage vulnerabilities</strong>
+      <strong>Damage vulnerabilities</strong>
       {{ item.damage_vulnerabilities.join(", ") }}
     </p>
     <p v-if="item.damage_resistances.length">
-      <strong class="font-semibold">Damage resistances</strong>
+      <strong>Damage resistances</strong>
       {{ item.damage_resistances.join(", ") }}
     </p>
     <p v-if="item.damage_immunities.length">
-      <strong class="font-semibold">Damage immunities</strong>
+      <strong>Damage immunities</strong>
       {{ item.damage_immunities.join(", ") }}
     </p>
     <p v-if="item.condition_immunities.length">
-      <strong class="font-semibold">Condition immunities</strong>
+      <strong>Condition immunities</strong>
       {{ item.condition_immunities.map((ci) => ci.name).join(", ") }}
     </p>
     <p>
-      <strong class="font-semibold">Senses </strong>
+      <strong>Senses </strong>
       <span v-for="(value, type, index) in item.senses"
         ><span v-if="index != 0">, </span>{{ type.replace("_", " ") }}
         {{ value }}</span
       >
     </p>
     <p>
-      <strong class="font-semibold">Languages</strong>
+      <strong>Languages</strong>
       <span v-if="item.languages">&nbsp;&nbsp;{{ item.languages }}</span>
       <span v-else>&nbsp;&nbsp;—</span>
     </p>
     <p>
-      <strong class="font-semibold">Challenge</strong>
+      <strong>Challenge</strong>
       {{ item.challenge_rating }} ({{ xp }} XP)
     </p>
 
@@ -114,7 +105,7 @@
   <template v-for="ability in item.special_abilities">
     <template v-if="ability.name === 'Spellcasting'">
       <p class="font-sans">
-        <strong class="font-semibold">{{ ability.name }}.</strong>
+        <strong>{{ ability.name }}.</strong>
         The {{ item.name }} is an {{ sc.level }}th-level spellcaster. Its
         spellcasting ability is {{ abilityFull(sc.ability.name) }} (spell save
         DC {{ sc.dc }}, +{{ sc.modifier }} to hit with spell attacks). The
@@ -136,7 +127,7 @@
     </template>
     <template v-else>
       <p class="font-sans">
-        <strong class="font-semibold"
+        <strong
           >{{ ability.name
           }}<span v-if="ability.dc">
             ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
@@ -156,7 +147,7 @@
       class="font-sans"
       :class="{ 'pl-4': index, '-indent-4': index }"
     >
-      <strong class="font-semibold" v-if="!index"
+      <strong v-if="!index"
         >{{ action.name
         }}<span v-if="action.usage">{{ usage(action.usage) }}</span
         >.</strong
@@ -179,7 +170,7 @@
       class="pl-4 -indent-4 font-sans"
       v-for="action in item.legendary_actions"
     >
-      <strong class="font-semibold">{{ action.name }}.</strong>
+      <strong>{{ action.name }}.</strong>
       {{ action.desc }}
     </p>
   </template>
