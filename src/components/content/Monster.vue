@@ -40,18 +40,14 @@
 
     <p v-if="savingThrows"><strong>Saving Throws</strong> {{ savingThrows }}</p>
     <p v-if="skills"><strong>Skills</strong> {{ skills }}</p>
-    <p v-if="item.damage_vulnerabilities.length">
-      <strong>Damage vulnerabilities</strong>
-      {{ item.damage_vulnerabilities.join(", ") }}
-    </p>
-    <p v-if="item.damage_resistances.length">
-      <strong>Damage resistances</strong>
-      {{ item.damage_resistances.join(", ") }}
-    </p>
-    <p v-if="item.damage_immunities.length">
-      <strong>Damage immunities</strong>
-      {{ item.damage_immunities.join(", ") }}
-    </p>
+
+    <template v-for="type in ['vulnerabilities', 'resistances', 'immunities']">
+      <p v-if="item['damage_' + type].length">
+        <strong>Damage {{ type }}</strong>
+        {{ item["damage_" + type].join(", ") }}
+      </p>
+    </template>
+
     <p v-if="item.condition_immunities.length">
       <strong>Condition immunities</strong>
       {{ item.condition_immunities.map((ci) => ci.name).join(", ") }}
