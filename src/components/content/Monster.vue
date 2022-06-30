@@ -30,35 +30,9 @@
     <hr class="clip-triangle-right h-1 bg-red-900" />
 
     <div class="flex justify-between px-3 text-center">
-      <span
-        ><strong>STR</strong><br />{{ item.strength }} ({{
-          modifier(item.strength)
-        }})</span
-      >
-      <span
-        ><strong>DEX</strong><br />{{ item.dexterity }} ({{
-          modifier(item.dexterity)
-        }})</span
-      >
-      <span
-        ><strong>CON</strong><br />{{ item.constitution }} ({{
-          modifier(item.constitution)
-        }})</span
-      >
-      <span
-        ><strong>INT</strong><br />{{ item.intelligence }} ({{
-          modifier(item.intelligence)
-        }})</span
-      >
-      <span
-        ><strong>WIS</strong><br />{{ item.wisdom }} ({{
-          modifier(item.wisdom)
-        }})</span
-      >
-      <span
-        ><strong>CHA</strong><br />{{ item.charisma }} ({{
-          modifier(item.charisma)
-        }})</span
+      <span v-for="(long, short) in abilities"
+        ><strong>{{ short }}</strong
+        ><br />{{ item[long] }} ({{ modifier(item[long]) }})</span
       >
     </div>
 
@@ -186,6 +160,15 @@ export default {
   props: ["item"],
 
   computed: {
+    abilities: () => ({
+      STR: "strength",
+      DEX: "dexterity",
+      CON: "constitution",
+      INT: "intelligence",
+      WIS: "wisdom",
+      CHA: "charisma",
+    }),
+
     hitBonus() {
       const [dices, size] = this.item.hit_dice.split("d");
       const diceAverage = (parseInt(size) + 1) / 2;
@@ -223,13 +206,7 @@ export default {
 
   methods: {
     abilityFull(abilityShort) {
-      const names = {
-        CHA: "charisma",
-        INT: "intelligence",
-        WIS: "wisdom",
-      };
-
-      return names[abilityShort];
+      return this.abilities[abilityShort];
     },
 
     modifier(score) {
