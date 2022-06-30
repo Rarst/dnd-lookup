@@ -150,14 +150,20 @@
 
   <h3 class="border-b-2 border-stone-200 font-sans">Actions</h3>
 
-  <p class="font-sans" v-for="action in item.actions">
-    <strong class="font-semibold"
-      >{{ action.name
-      }}<span v-if="action.usage">{{ usage(action.usage) }}</span
-      >.</strong
+  <template v-for="action in item.actions">
+    <p
+      v-for="(paragraph, index) in action.desc.split('\n\n')"
+      class="font-sans"
+      :class="{ 'pl-4': index, '-indent-4': index }"
     >
-    {{ action.desc }}
-  </p>
+      <strong class="font-semibold" v-if="!index"
+        >{{ action.name
+        }}<span v-if="action.usage">{{ usage(action.usage) }}</span
+        >.</strong
+      >
+      {{ paragraph }}
+    </p>
+  </template>
 
   <template v-if="item.legendary_actions">
     <h3 class="border-b-2 border-stone-200 font-sans">Legendary Actions</h3>
@@ -169,7 +175,10 @@
       spent legendary actions at the start of its turn.
     </p>
 
-    <p class="font-sans" v-for="action in item.legendary_actions">
+    <p
+      class="pl-4 -indent-4 font-sans"
+      v-for="action in item.legendary_actions"
+    >
       <strong class="font-semibold">{{ action.name }}.</strong>
       {{ action.desc }}
     </p>
