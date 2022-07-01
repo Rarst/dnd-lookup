@@ -95,6 +95,39 @@
         </li>
       </ol>
     </template>
+    <div v-else-if="ability.name === 'Innate Spellcasting'">
+      <p class="font-sans">
+        <strong>{{ ability.name }}. </strong>
+        The {{ item.name }}'s spellcasting ability is {{ isc.abilityName }}
+        <span v-if="isc.spellAttack"> ({{ isc.spellAttack }})</span>. It can
+        innately cast the following spells<span
+          v-if="ability.desc.includes('no material components')"
+          >, requiring no material components</span
+        ><span v-if="isc.components.length === 1 && isc.components[0] === 'V'"
+          >, requiring only verbal components</span
+        >:
+      </p>
+      <ul class="font-sans marker:text-stone-300 sm:list-disc">
+        <li v-if="isc.spellsGrouped['at will']">
+          At will:
+          <template v-for="spell in isc.spellsGrouped['at will']">
+            <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
+              >({{ spell.notes }})</span
+            >
+          </template>
+        </li>
+        <template v-for="count in 5">
+          <li v-if="isc.spellsGrouped[6 - count]">
+            {{ 6 - count }}/day each:
+            <template v-for="spell in isc.spellsGrouped[6 - count]">
+              <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
+                >({{ spell.notes }})</span
+              >
+            </template>
+          </li>
+        </template>
+      </ul>
+    </div>
     <template v-else>
       <p class="font-sans">
         <strong
@@ -170,6 +203,50 @@ export default {
       const diceAverage = (parseInt(size) + 1) / 2;
 
       return Math.round(this.item.hit_points - parseInt(dices) * diceAverage);
+    },
+
+    isc() {
+      const isc = this.item.special_abilities.filter(
+        (ability) => ability.name === "Innate Spellcasting"
+      )[0].spellcasting;
+
+      let abilityName = this.abilityFull(isc.ability.name);
+      isc.abilityName = abilityName[0].toUpperCase() + abilityName.slice(1);
+      isc.components = isc.components_required;
+
+      const spells = {};
+
+      for (let spell of isc.spells) {
+        if (spell.usage.type === "at will") {
+          if (!spells["at will"]) {
+            spells["at will"] = [];
+          }
+          spells["at will"].push(spell);
+        } else {
+          let times = spell.usage.times;
+          if (!spells[times]) {
+            spells[times] = [];
+          }
+
+          spells[times].push(spell);
+        }
+      }
+
+      isc.spellsGrouped = spells;
+
+      const spellAttack = [];
+
+      if (isc.dc) {
+        spellAttack.push(`spell save DC ${isc.dc}`);
+      }
+
+      if (isc.modifier) {
+        spellAttack.push(`+${isc.modifier} to hit with spell attacks`);
+      }
+
+      isc.spellAttack = spellAttack.join(", ");
+
+      return isc;
     },
 
     savingThrows() {
