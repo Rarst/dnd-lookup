@@ -113,7 +113,7 @@
 
   <template v-for="action in item.actions">
     <p
-      v-for="(paragraph, index) in action.desc.split('\n\n')"
+      v-for="(paragraph, index) in action.desc.split(/\n+/)"
       class="font-sans"
       :class="{ 'pl-4': index, '-indent-4': index }"
     >
