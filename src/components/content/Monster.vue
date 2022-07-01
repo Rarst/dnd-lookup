@@ -66,7 +66,7 @@
     </p>
     <p>
       <strong>Challenge</strong>
-      {{ item.challenge_rating }} ({{ xp }} XP)
+      {{ cr }} ({{ xp }} XP)
     </p>
 
     <hr class="clip-triangle-right h-1 bg-red-900" />
@@ -197,6 +197,17 @@ export default {
       WIS: "wisdom",
       CHA: "charisma",
     }),
+
+    cr() {
+      const cr = this.item.challenge_rating;
+      const crs = {
+        0.125: "1/8",
+        0.25: "1/4",
+        0.5: "1/2",
+      };
+
+      return crs[cr] ? crs[cr] : cr;
+    },
 
     hitBonus() {
       const [dices, size] = this.item.hit_dice.split("d");
