@@ -217,9 +217,9 @@ export default {
     },
 
     isc() {
-      const isc = this.item.special_abilities.filter(
+      const isc = this.item.special_abilities.find(
         (ability) => ability.name === "Innate Spellcasting"
-      )[0].spellcasting;
+      ).spellcasting;
 
       let abilityName = this.abilityFull(isc.ability.name);
       isc.abilityName = abilityName[0].toUpperCase() + abilityName.slice(1);
@@ -278,9 +278,9 @@ export default {
     },
 
     sc() {
-      return this.item.special_abilities.filter(
+      return this.item.special_abilities.find(
         (ability) => ability.name === "Spellcasting"
-      )[0].spellcasting;
+      ).spellcasting;
     },
 
     xp() {
