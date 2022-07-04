@@ -1,8 +1,8 @@
 <template>
   <ItemHeader :item="item"></ItemHeader>
-  <p><strong class="font-semibold">Hit Die:</strong> d{{ item.hit_die }}</p>
+  <p><strong>Hit Die:</strong> d{{ item.hit_die }}</p>
   <p>
-    <strong class="font-semibold">Saving Throws Proficiencies:</strong>
+    <strong>Saving Throws Proficiencies:</strong>
     {{ item.saving_throws.map((st) => st.name).join(", ") }}
   </p>
 
@@ -27,7 +27,7 @@
   <template v-if="item.spellcasting">
     <h3>Spellcasting</h3>
     <p>
-      <strong class="font-semibold">Level</strong>
+      <strong>Level</strong>
       {{ item.spellcasting.level }}
     </p>
     <template v-for="info in item.spellcasting.info">

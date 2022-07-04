@@ -30,6 +30,10 @@
     @apply font-bold;
   }
 
+  strong {
+    @apply font-semibold;
+  }
+
   ol > li::marker {
     @apply text-stone-500;
   }

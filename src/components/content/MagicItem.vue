@@ -5,7 +5,7 @@
   </div>
   <div v-html="content" class="prose"></div>
   <p>
-    <strong class="font-semibold">Category:</strong>
+    <strong>Category:</strong>
     <ItemLink :linkTo="item.equipment_category.name"></ItemLink>
   </p>
 </template>

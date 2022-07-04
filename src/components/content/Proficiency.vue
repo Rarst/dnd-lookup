@@ -1,6 +1,6 @@
 <template>
   <ItemHeader :item="item"></ItemHeader>
-  <p><strong class="font-semibold">Type: </strong> {{ item.type }}</p>
+  <p><strong>Type: </strong> {{ item.type }}</p>
   <LinksSection
     v-if="item.classes.length"
     :item="item"

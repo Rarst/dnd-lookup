@@ -3,12 +3,12 @@
   <p>{{ item.desc }}</p>
 
   <p>
-    <strong class="font-semibold">Race:</strong>
+    <strong>Race:</strong>
     <ItemLink :linkTo="item.race.name"></ItemLink>
   </p>
 
   <p>
-    <strong class="font-semibold">Ability bonuses:</strong>
+    <strong>Ability bonuses:</strong>
     <span v-for="bonus in item.ability_bonuses"
       >&nbsp;{{ bonus.ability_score.name + " +" + bonus.bonus }}</span
     >

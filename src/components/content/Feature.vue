@@ -1,7 +1,7 @@
 <template>
   <ItemHeader :item="item"></ItemHeader>
   <p>
-    <strong class="font-semibold">Class:</strong>
+    <strong>Class:</strong>
     <ItemLink
       v-if="item.subclass && item.subclass.name"
       :linkTo="item.subclass.name"

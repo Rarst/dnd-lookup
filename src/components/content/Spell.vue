@@ -2,23 +2,21 @@
   <ItemHeader :item="item"></ItemHeader>
 
   <p>
-    <strong class="font-semibold">Level:</strong>
+    <strong>Level:</strong>
     {{ item.level > 0 ? item.level : "cantrip" }}
   </p>
-  <p><strong class="font-semibold">School:</strong> {{ item.school.name }}</p>
+  <p><strong>School:</strong> {{ item.school.name }}</p>
   <p>
-    <strong class="font-semibold">Casting time:</strong> {{ item.casting_time }}
-    <span v-if="item.ritual"
-      >(+10 minutes as <strong class="font-semibold">ritual</strong>)</span
-    >
+    <strong>Casting time:</strong> {{ item.casting_time }}
+    <span v-if="item.ritual">(+10 minutes as <strong>ritual</strong>)</span>
     <span v-if="item.concentration"
-      >and <strong class="font-semibold">concentration</strong> required</span
+      >and <strong>concentration</strong> required</span
     >
   </p>
-  <p><strong class="font-semibold">Duration:</strong> {{ item.duration }}</p>
-  <p><strong class="font-semibold">Range:</strong> {{ item.range }}</p>
+  <p><strong>Duration:</strong> {{ item.duration }}</p>
+  <p><strong>Range:</strong> {{ item.range }}</p>
   <p>
-    <strong class="font-semibold">Components: </strong>
+    <strong>Components: </strong>
     <span v-for="c in item.components" :key="c">
       {{
         c
@@ -28,9 +26,7 @@
       }}</span
     >
   </p>
-  <p v-if="item.material">
-    <strong class="font-semibold">Material:</strong> {{ item.material }}
-  </p>
+  <p v-if="item.material"><strong>Material:</strong> {{ item.material }}</p>
 
   <div v-html="content" class="prose"></div>
 

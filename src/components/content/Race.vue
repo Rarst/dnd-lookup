@@ -1,10 +1,10 @@
 <template>
   <ItemHeader :item="item"></ItemHeader>
 
-  <p><strong class="font-semibold">Speed:</strong> {{ item.speed }} ft.</p>
+  <p><strong>Speed:</strong> {{ item.speed }} ft.</p>
 
   <p>
-    <strong class="font-semibold">Ability bonuses: </strong>
+    <strong>Ability bonuses: </strong>
     <span v-for="bonus in item.ability_bonuses">
       &nbsp;{{ bonus.ability_score.name }} +{{ bonus.bonus }}</span
     >
@@ -19,11 +19,9 @@
     >
   </p>
 
-  <p><strong class="font-semibold">Alignment:</strong> {{ item.alignment }}</p>
-  <p><strong class="font-semibold">Age:</strong> {{ item.age }}</p>
-  <p>
-    <strong class="font-semibold">Size:</strong> {{ item.size_description }}
-  </p>
+  <p><strong>Alignment:</strong> {{ item.alignment }}</p>
+  <p><strong>Age:</strong> {{ item.age }}</p>
+  <p><strong>Size:</strong> {{ item.size_description }}</p>
 
   <div>
     <h3>Languages</h3>
