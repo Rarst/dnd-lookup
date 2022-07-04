@@ -1,7 +1,7 @@
 <template>
   <div
     :class="headerClasses"
-    class="relative sticky top-0 flex items-center rounded-full pt-3 transition-opacity duration-300"
+    class="sticky top-0 z-10 flex items-center rounded-full pt-3 transition-opacity duration-300"
   >
     <label class="sr-only" for="search">Search</label>
     <input
