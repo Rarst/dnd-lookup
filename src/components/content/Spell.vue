@@ -32,7 +32,10 @@
     <strong class="font-semibold">Material:</strong> {{ item.material }}
   </p>
 
-  <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
+  <div
+    v-html="content"
+    class="prose prose-stone max-w-none prose-p:leading-normal prose-li:leading-normal prose-ol:sm:-ml-8 prose-ul:sm:-ml-8"
+  ></div>
 
   <div v-if="item.higher_level">
     <h3>Higher level</h3>
@@ -46,9 +49,27 @@
 <script>
 import ItemHeader from "../ItemHeader.vue";
 import LinksSection from "../LinksSection.vue";
+import { marked } from "marked";
 
 export default {
   components: { LinksSection, ItemHeader },
   props: ["item"],
+  computed: {
+    content() {
+      let content = [];
+
+      for (let sentence of this.item.desc) {
+        if (sentence[0] === "-" || sentence[0] === "|") {
+          // unordered list item or table row
+          content.push("\n" + sentence);
+        } else {
+          // paragraph or another standalone element
+          content.push("\n\n" + sentence);
+        }
+      }
+
+      return marked.parse(content.join(""));
+    },
+  },
 };
 </script>
