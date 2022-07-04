@@ -29,6 +29,40 @@
   h6 {
     @apply font-bold;
   }
+
+  ol > li::marker {
+    @apply text-stone-500;
+  }
+
+  ul > li::marker {
+    @apply text-stone-300;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply prose-stone max-w-none prose-headings:text-black prose-p:text-black;
+  }
+
+  .prose p {
+    @apply leading-normal;
+  }
+
+  .prose li {
+    @apply pl-0 leading-normal;
+  }
+
+  .prose ol,
+  .prose ul {
+    @apply pl-4;
+  }
+
+  @screen sm {
+    .prose ol,
+    .prose ul {
+      @apply -ml-4;
+    }
+  }
 }
 
 @layer utilities {

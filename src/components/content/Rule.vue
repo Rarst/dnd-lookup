@@ -1,10 +1,7 @@
 <template>
   <div class="space-y-3">
     <ItemHeader :item="item"></ItemHeader>
-    <div
-      v-html="content"
-      class="prose prose-stone max-w-none prose-p:leading-normal prose-li:leading-normal prose-ol:sm:-ml-8 prose-ul:sm:-ml-8"
-    ></div>
+    <div v-html="content" class="prose"></div>
     <LinksSection
       v-if="item.subsections"
       :item="item"

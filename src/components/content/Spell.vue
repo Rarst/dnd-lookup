@@ -32,10 +32,7 @@
     <strong class="font-semibold">Material:</strong> {{ item.material }}
   </p>
 
-  <div
-    v-html="content"
-    class="prose prose-stone max-w-none prose-p:leading-normal prose-li:leading-normal prose-ol:sm:-ml-8 prose-ul:sm:-ml-8"
-  ></div>
+  <div v-html="content" class="prose"></div>
 
   <div v-if="item.higher_level">
     <h3>Higher level</h3>

@@ -3,10 +3,7 @@
     <ItemHeader :item="item"></ItemHeader>
     <p class="italic">{{ item.desc[0] }}</p>
   </div>
-  <div
-    v-html="content"
-    class="prose prose-stone max-w-none prose-p:leading-normal prose-li:leading-normal prose-ol:sm:-ml-8 prose-ul:sm:-ml-8"
-  ></div>
+  <div v-html="content" class="prose"></div>
   <p>
     <strong class="font-semibold">Category:</strong>
     <ItemLink :linkTo="item.equipment_category.name"></ItemLink>
