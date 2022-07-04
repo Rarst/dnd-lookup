@@ -34,10 +34,7 @@ export default {
         }
       }
 
-      content = content.join("");
-      content = marked.parse(content);
-
-      return content;
+      return marked.parse(content.join(""));
     },
   },
 };
