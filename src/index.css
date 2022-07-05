@@ -35,17 +35,17 @@
   }
 
   ol > li::marker {
-    @apply text-stone-500;
+    @apply text-stone-500 dark:text-stone-400;
   }
 
   ul > li::marker {
-    @apply text-stone-300;
+    @apply text-stone-300 dark:text-stone-600;
   }
 }
 
 @layer components {
   .prose {
-    @apply prose-stone max-w-none prose-headings:text-black prose-p:text-black;
+    @apply prose-stone max-w-none prose-headings:text-black prose-p:text-black dark:prose-invert prose-headings:dark:text-stone-300 prose-p:dark:text-stone-300;
   }
 
   .prose p {

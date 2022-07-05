@@ -10,7 +10,9 @@
   </div>
 
   <div class="space-y-1 font-sans">
-    <hr class="clip-triangle-right h-1 bg-red-900" />
+    <hr
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+    />
 
     <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
     <p>
@@ -27,7 +29,9 @@
       >
     </p>
 
-    <hr class="clip-triangle-right h-1 bg-red-900" />
+    <hr
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+    />
 
     <div class="flex justify-between px-3 text-center">
       <span v-for="(long, short) in abilities"
@@ -36,7 +40,9 @@
       >
     </div>
 
-    <hr class="clip-triangle-right h-1 bg-red-900" />
+    <hr
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+    />
 
     <p v-if="savingThrows"><strong>Saving Throws</strong> {{ savingThrows }}</p>
     <p v-if="skills"><strong>Skills</strong> {{ skills }}</p>
@@ -69,7 +75,9 @@
       {{ cr }} ({{ xp }} XP)
     </p>
 
-    <hr class="clip-triangle-right h-1 bg-red-900" />
+    <hr
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+    />
   </div>
 
   <template v-for="ability in item.special_abilities">
@@ -142,7 +150,9 @@
     </template>
   </template>
 
-  <h3 class="border-b-2 border-stone-200 font-sans">Actions</h3>
+  <h3 class="border-b-2 border-stone-200 font-sans dark:border-stone-600">
+    Actions
+  </h3>
 
   <template v-for="action in item.actions">
     <p
@@ -160,7 +170,9 @@
   </template>
 
   <template v-if="item.legendary_actions">
-    <h3 class="border-b-2 border-stone-200 font-sans">Legendary Actions</h3>
+    <h3 class="border-b-2 border-stone-200 font-sans dark:border-stone-600">
+      Legendary Actions
+    </h3>
 
     <p class="font-sans">
       The {{ item.name }} can take 3 legendary actions, choosing from the
