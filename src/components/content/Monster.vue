@@ -11,7 +11,7 @@
 
   <div class="space-y-1 font-sans">
     <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
     />
 
     <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
@@ -30,7 +30,7 @@
     </p>
 
     <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
     />
 
     <div class="flex justify-between px-3 text-center">
@@ -41,7 +41,7 @@
     </div>
 
     <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
     />
 
     <p v-if="savingThrows"><strong>Saving Throws</strong> {{ savingThrows }}</p>
@@ -76,7 +76,7 @@
     </p>
 
     <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600 dark:text-stone-800"
+      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
     />
   </div>
 
