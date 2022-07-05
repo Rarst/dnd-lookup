@@ -10,9 +10,7 @@
   </div>
 
   <div class="space-y-1 font-sans">
-    <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
-    />
+    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
 
     <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
     <p>
@@ -29,9 +27,7 @@
       >
     </p>
 
-    <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
-    />
+    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
 
     <div class="flex justify-between px-3 text-center">
       <span v-for="(long, short) in abilities"
@@ -40,9 +36,7 @@
       >
     </div>
 
-    <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
-    />
+    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
 
     <p v-if="savingThrows"><strong>Saving Throws</strong> {{ savingThrows }}</p>
     <p v-if="skills"><strong>Skills</strong> {{ skills }}</p>
@@ -75,9 +69,7 @@
       {{ cr }} ({{ xp }} XP)
     </p>
 
-    <hr
-      class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-700 dark:text-stone-800"
-    />
+    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
   </div>
 
   <template v-for="ability in item.special_abilities">
