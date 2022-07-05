@@ -45,7 +45,7 @@
 
 @layer components {
   .prose {
-    @apply prose-stone max-w-none prose-headings:text-black prose-p:text-black dark:prose-invert prose-headings:dark:text-stone-300 prose-p:dark:text-stone-300;
+    @apply prose-stone max-w-none prose-headings:text-black prose-p:text-black dark:prose-invert prose-headings:dark:text-stone-300 prose-p:dark:text-stone-300 prose-strong:dark:text-stone-300;
   }
 
   .prose p {
