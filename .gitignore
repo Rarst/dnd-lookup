@@ -4,7 +4,7 @@ dist
 dist-ssr
 *.local
 
+/local
 /5e-database
-*.pdf
 
 /output
