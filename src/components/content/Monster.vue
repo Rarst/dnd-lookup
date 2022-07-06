@@ -129,15 +129,19 @@
       </ul>
     </div>
     <template v-else>
-      <p class="font-sans">
-        <strong
+      <p
+        v-for="(paragraph, index) in ability.desc.split(/\n+/)"
+        class="font-sans"
+        :class="{ 'indent-4': index }"
+      >
+        <strong v-if="!index"
           >{{ ability.name
           }}<span v-if="ability.dc">
             ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
           ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
           >.</strong
         >
-        {{ ability.desc }}
+        {{ paragraph }}
       </p>
     </template>
   </template>
@@ -150,7 +154,7 @@
     <p
       v-for="(paragraph, index) in action.desc.split(/\n+/)"
       class="font-sans"
-      :class="{ 'pl-4': index, '-indent-4': index }"
+      :class="{ 'indent-4': index }"
     >
       <strong v-if="!index"
         >{{ action.name
