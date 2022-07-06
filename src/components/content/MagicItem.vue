@@ -1,7 +1,7 @@
 <template>
   <div>
     <ItemHeader :item="item"></ItemHeader>
-    <p class="italic">{{ item.desc[0] }}</p>
+    <p class="text-lg italic">{{ item.desc[0] }}</p>
   </div>
   <div v-html="content" class="prose"></div>
   <p>

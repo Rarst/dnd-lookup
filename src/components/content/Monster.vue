@@ -2,7 +2,7 @@
   <div>
     <ItemHeader :item="item"></ItemHeader>
 
-    <p class="italic">
+    <p class="font-sans text-lg italic">
       {{ item.size }} {{ item.type
       }}<span v-if="item.subtype"> ({{ item.subtype }})</span>,
       {{ item.alignment }}
