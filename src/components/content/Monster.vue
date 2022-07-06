@@ -81,19 +81,19 @@
         DC {{ sc.dc }}, +{{ sc.modifier }} to hit with spell attacks). The
         {{ item.name }} has the following {{ sc.school }} spells prepared:
       </p>
-      <ol class="font-sans sm:list-decimal" start="0">
+      <ul class="font-sans sm:list-disc">
         <li v-if="spellsLevel(0).length">
           Cantrips (at will):
           <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell" />
         </li>
         <li v-for="(count, level) in sc.slots">
-          Level {{ level }} (slots {{ count }}):
+          {{ suffixLevel(level) }} ({{ countSlots(count) }}):
           <ItemLink
             v-for="spell in spellsLevel(parseInt(level))"
             :linkTo="spell"
           />
         </li>
-      </ol>
+      </ul>
     </template>
     <div v-else-if="ability.name === 'Innate Spellcasting'">
       <p class="font-sans">
@@ -301,10 +301,24 @@ export default {
       return this.abilities[abilityShort];
     },
 
+    countSlots(slots) {
+      return slots === 1 ? "1 slot" : slots + " slots";
+    },
+
     modifier(score) {
       const modifier = Math.floor((score - 10) / 2);
       const sign = modifier >= 0 ? "+" : "";
       return sign + modifier;
+    },
+
+    suffixLevel(level) {
+      const suffixes = {
+        1: "1st",
+        2: "2nd",
+        3: "3rd",
+      };
+
+      return suffixes[level] ? suffixes[level] + " level" : level + "th level";
     },
 
     usage(usage) {
