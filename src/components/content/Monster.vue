@@ -16,10 +16,7 @@
       <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
       <p>
         <strong>Hit Points</strong>
-        {{ item.hit_points }} ({{ item.hit_dice
-        }}<span v-if="hitBonus">
-          {{ hitBonus > 0 ? "+" : "-" }} {{ Math.abs(hitBonus) }}</span
-        >)
+        {{ item.hit_points }} ({{ item.hit_dice }}{{ hitPointBonus }})
       </p>
       <p>
         <strong>Speed </strong>
@@ -212,11 +209,16 @@ export default {
       return crs[cr] ? crs[cr] : cr;
     },
 
-    hitBonus() {
-      const [dices, size] = this.item.hit_dice.split("d");
-      const diceAverage = (parseInt(size) + 1) / 2;
+    hitPointBonus() {
+      const diceNumber = this.item.hit_dice.split("d")[0];
+      const conModifier = this.modifier(this.item.constitution);
+      const bonus = diceNumber * conModifier;
 
-      return Math.round(this.item.hit_points - parseInt(dices) * diceAverage);
+      if (bonus === 0) {
+        return "";
+      }
+
+      return bonus > 0 ? "+" + bonus : bonus;
     },
 
     isc() {
@@ -302,8 +304,7 @@ export default {
 
     modifier(score) {
       const modifier = Math.floor((score - 10) / 2);
-      const sign = modifier >= 0 ? "+" : "";
-      return sign + modifier;
+      return modifier >= 0 ? "+" + modifier : modifier;
     },
 
     suffixLevel(level) {
