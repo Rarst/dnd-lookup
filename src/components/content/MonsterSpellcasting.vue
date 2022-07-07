@@ -63,15 +63,6 @@
 </template>
 
 <script>
-const abilities = {
-  STR: "Strength",
-  DEX: "Dexterity",
-  CON: "Constitution",
-  INT: "Intelligence",
-  WIS: "Wisdom",
-  CHA: "Charisma",
-};
-
 export default {
   props: ["name", "spellcasting"],
   computed: {
@@ -129,6 +120,15 @@ export default {
   },
   methods: {
     abilityFull(abilityShort) {
+      const abilities = {
+        STR: "Strength",
+        DEX: "Dexterity",
+        CON: "Constitution",
+        INT: "Intelligence",
+        WIS: "Wisdom",
+        CHA: "Charisma",
+      };
+
       return abilities[abilityShort];
     },
 
