@@ -10,14 +10,15 @@
     <ul class="sm:list-disc">
       <li v-if="spellsLevel(0).length">
         Cantrips (at will):
-        <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell" />
+        <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell.name" />
       </li>
       <li v-for="(count, level) in sc.slots">
         {{ suffixLevel(level) }} ({{ countSlots(count) }}):
-        <ItemLink
-          v-for="spell in spellsLevel(parseInt(level))"
-          :linkTo="spell"
-        />
+        <template v-for="spell in spellsLevel(parseInt(level))"
+          ><ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
+            >({{ spell.notes }})</span
+          >
+        </template>
       </li>
     </ul>
   </template>
@@ -135,9 +136,9 @@ export default {
     },
 
     spellsLevel(level) {
-      return this.sc.spells
-        .filter((spell) => spell.level === level)
-        .map((spell) => spell.name);
+      return this.sc.spells.filter(
+        (spell) => spell.level === level && !spell.usage
+      );
     },
   },
 };
