@@ -1,190 +1,190 @@
 <template>
-  <div>
-    <ItemHeader :item="item"></ItemHeader>
+  <div class="space-y-3 font-sans">
+    <div>
+      <ItemHeader :item="item"></ItemHeader>
 
-    <p class="font-sans text-lg italic">
-      {{ item.size }} {{ item.type
-      }}<span v-if="item.subtype"> ({{ item.subtype }})</span>,
-      {{ item.alignment }}
-    </p>
-  </div>
-
-  <div class="space-y-1 font-sans">
-    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
-
-    <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
-    <p>
-      <strong>Hit Points</strong>
-      {{ item.hit_points }} ({{ item.hit_dice
-      }}<span v-if="hitBonus">
-        {{ hitBonus > 0 ? "+" : "-" }} {{ Math.abs(hitBonus) }}</span
-      >)
-    </p>
-    <p>
-      <strong>Speed </strong>
-      <span v-for="(value, type, index) in item.speed">
-        <span v-if="index != 0">, </span>{{ type }} {{ value }}</span
-      >
-    </p>
-
-    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
-
-    <div class="flex justify-between px-3 text-center">
-      <span v-for="(long, short) in abilities"
-        ><strong>{{ short }}</strong
-        ><br />{{ item[long] }} ({{ modifier(item[long]) }})</span
-      >
+      <p class="text-lg italic">
+        {{ item.size }} {{ item.type
+        }}<span v-if="item.subtype"> ({{ item.subtype }})</span>,
+        {{ item.alignment }}
+      </p>
     </div>
 
-    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+    <div class="space-y-1">
+      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
 
-    <p v-if="savingThrows"><strong>Saving Throws</strong> {{ savingThrows }}</p>
-    <p v-if="skills"><strong>Skills</strong> {{ skills }}</p>
-
-    <template v-for="type in ['vulnerabilities', 'resistances', 'immunities']">
-      <p v-if="item['damage_' + type].length">
-        <strong>Damage {{ type }}</strong>
-        {{ item["damage_" + type].join(", ") }}
+      <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
+      <p>
+        <strong>Hit Points</strong>
+        {{ item.hit_points }} ({{ item.hit_dice
+        }}<span v-if="hitBonus">
+          {{ hitBonus > 0 ? "+" : "-" }} {{ Math.abs(hitBonus) }}</span
+        >)
       </p>
-    </template>
+      <p>
+        <strong>Speed </strong>
+        <span v-for="(value, type, index) in item.speed">
+          <span v-if="index != 0">, </span>{{ type }} {{ value }}</span
+        >
+      </p>
 
-    <p v-if="item.condition_immunities.length">
-      <strong>Condition immunities</strong>
-      {{ item.condition_immunities.map((ci) => ci.name).join(", ") }}
-    </p>
-    <p>
-      <strong>Senses </strong>
-      <span v-for="(value, type, index) in item.senses"
-        ><span v-if="index != 0">, </span>{{ type.replace("_", " ") }}
-        {{ value }}</span
+      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+
+      <div class="flex justify-between px-3 text-center">
+        <span v-for="(long, short) in abilities"
+          ><strong>{{ short }}</strong
+          ><br />{{ item[long] }} ({{ modifier(item[long]) }})</span
+        >
+      </div>
+
+      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+
+      <p v-if="savingThrows">
+        <strong>Saving Throws</strong> {{ savingThrows }}
+      </p>
+      <p v-if="skills"><strong>Skills</strong> {{ skills }}</p>
+
+      <template
+        v-for="type in ['vulnerabilities', 'resistances', 'immunities']"
       >
-    </p>
-    <p>
-      <strong>Languages</strong>
-      <span v-if="item.languages">&nbsp;&nbsp;{{ item.languages }}</span>
-      <span v-else>&nbsp;&nbsp;—</span>
-    </p>
-    <p>
-      <strong>Challenge</strong>
-      {{ cr }} ({{ xp }} XP)
-    </p>
+        <p v-if="item['damage_' + type].length">
+          <strong>Damage {{ type }}</strong>
+          {{ item["damage_" + type].join(", ") }}
+        </p>
+      </template>
 
-    <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
-  </div>
+      <p v-if="item.condition_immunities.length">
+        <strong>Condition immunities</strong>
+        {{ item.condition_immunities.map((ci) => ci.name).join(", ") }}
+      </p>
+      <p>
+        <strong>Senses </strong>
+        <span v-for="(value, type, index) in item.senses"
+          ><span v-if="index != 0">, </span>{{ type.replace("_", " ") }}
+          {{ value }}</span
+        >
+      </p>
+      <p>
+        <strong>Languages</strong>
+        <span v-if="item.languages">&nbsp;&nbsp;{{ item.languages }}</span>
+        <span v-else>&nbsp;&nbsp;—</span>
+      </p>
+      <p>
+        <strong>Challenge</strong>
+        {{ cr }} ({{ xp }} XP)
+      </p>
 
-  <template v-for="ability in item.special_abilities">
-    <template v-if="ability.name === 'Spellcasting'">
-      <p class="font-sans">
-        <strong>{{ ability.name }}.</strong>
-        The {{ item.name }} is an {{ sc.level }}th-level spellcaster. Its
-        spellcasting ability is {{ abilityFull(sc.ability.name) }} (spell save
-        DC {{ sc.dc }}, +{{ sc.modifier }} to hit with spell attacks). The
-        {{ item.name }} has the following {{ sc.school }} spells prepared:
-      </p>
-      <ul class="font-sans sm:list-disc">
-        <li v-if="spellsLevel(0).length">
-          Cantrips (at will):
-          <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell" />
-        </li>
-        <li v-for="(count, level) in sc.slots">
-          {{ suffixLevel(level) }} ({{ countSlots(count) }}):
-          <ItemLink
-            v-for="spell in spellsLevel(parseInt(level))"
-            :linkTo="spell"
-          />
-        </li>
-      </ul>
-    </template>
-    <div v-else-if="ability.name === 'Innate Spellcasting'">
-      <p class="font-sans">
-        <strong>{{ ability.name }}. </strong>
-        The {{ item.name }}'s spellcasting ability is {{ isc.abilityName }}
-        <span v-if="isc.spellAttack"> ({{ isc.spellAttack }})</span>. It can
-        innately cast the following spells<span
-          v-if="ability.desc.includes('no material components')"
-          >, requiring no material components</span
-        ><span v-if="isc.components.length === 1 && isc.components[0] === 'V'"
-          >, requiring only verbal components</span
-        >:
-      </p>
-      <ul class="font-sans marker:text-stone-300 sm:list-disc">
-        <li v-if="isc.spellsGrouped['at will']">
-          At will:
-          <template v-for="spell in isc.spellsGrouped['at will']">
-            <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
-              >({{ spell.notes }})</span
-            >
-          </template>
-        </li>
-        <template v-for="count in 5">
-          <li v-if="isc.spellsGrouped[6 - count]">
-            {{ 6 - count }}/day each:
-            <template v-for="spell in isc.spellsGrouped[6 - count]">
+      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+    </div>
+
+    <template v-for="ability in item.special_abilities">
+      <template v-if="ability.name === 'Spellcasting'">
+        <p>
+          <strong>{{ ability.name }}.</strong>
+          The {{ item.name }} is an {{ sc.level }}th-level spellcaster. Its
+          spellcasting ability is {{ abilityFull(sc.ability.name) }} (spell save
+          DC {{ sc.dc }}, +{{ sc.modifier }} to hit with spell attacks). The
+          {{ item.name }} has the following {{ sc.school }} spells prepared:
+        </p>
+        <ul class="sm:list-disc">
+          <li v-if="spellsLevel(0).length">
+            Cantrips (at will):
+            <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell" />
+          </li>
+          <li v-for="(count, level) in sc.slots">
+            {{ suffixLevel(level) }} ({{ countSlots(count) }}):
+            <ItemLink
+              v-for="spell in spellsLevel(parseInt(level))"
+              :linkTo="spell"
+            />
+          </li>
+        </ul>
+      </template>
+      <div v-else-if="ability.name === 'Innate Spellcasting'">
+        <p>
+          <strong>{{ ability.name }}. </strong>
+          The {{ item.name }}'s spellcasting ability is {{ isc.abilityName }}
+          <span v-if="isc.spellAttack"> ({{ isc.spellAttack }})</span>. It can
+          innately cast the following spells<span
+            v-if="ability.desc.includes('no material components')"
+            >, requiring no material components</span
+          ><span v-if="isc.components.length === 1 && isc.components[0] === 'V'"
+            >, requiring only verbal components</span
+          >:
+        </p>
+        <ul class="marker:text-stone-300 sm:list-disc">
+          <li v-if="isc.spellsGrouped['at will']">
+            At will:
+            <template v-for="spell in isc.spellsGrouped['at will']">
               <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
                 >({{ spell.notes }})</span
               >
             </template>
           </li>
-        </template>
-      </ul>
-    </div>
-    <template v-else>
+          <template v-for="count in 5">
+            <li v-if="isc.spellsGrouped[6 - count]">
+              {{ 6 - count }}/day each:
+              <template v-for="spell in isc.spellsGrouped[6 - count]">
+                <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
+                  >({{ spell.notes }})</span
+                >
+              </template>
+            </li>
+          </template>
+        </ul>
+      </div>
+      <template v-else>
+        <p
+          v-for="(paragraph, index) in ability.desc.split(/\n+/)"
+          :class="{ 'indent-4': index }"
+        >
+          <strong v-if="!index"
+            >{{ ability.name
+            }}<span v-if="ability.dc">
+              ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
+            ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
+            >.</strong
+          >
+          {{ paragraph }}
+        </p>
+      </template>
+    </template>
+
+    <h3 class="border-b-2 border-stone-200 dark:border-stone-600">Actions</h3>
+
+    <template v-for="action in item.actions">
       <p
-        v-for="(paragraph, index) in ability.desc.split(/\n+/)"
-        class="font-sans"
+        v-for="(paragraph, index) in action.desc.split(/\n+/)"
         :class="{ 'indent-4': index }"
       >
         <strong v-if="!index"
-          >{{ ability.name
-          }}<span v-if="ability.dc">
-            ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
-          ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
+          >{{ action.name
+          }}<span v-if="action.usage"> {{ usage(action.usage) }}</span
           >.</strong
         >
         {{ paragraph }}
       </p>
     </template>
-  </template>
 
-  <h3 class="border-b-2 border-stone-200 font-sans dark:border-stone-600">
-    Actions
-  </h3>
+    <template v-if="item.legendary_actions">
+      <h3 class="border-b-2 border-stone-200 dark:border-stone-600">
+        Legendary Actions
+      </h3>
 
-  <template v-for="action in item.actions">
-    <p
-      v-for="(paragraph, index) in action.desc.split(/\n+/)"
-      class="font-sans"
-      :class="{ 'indent-4': index }"
-    >
-      <strong v-if="!index"
-        >{{ action.name
-        }}<span v-if="action.usage">{{ usage(action.usage) }}</span
-        >.</strong
-      >
-      {{ paragraph }}
-    </p>
-  </template>
+      <p>
+        The {{ item.name }} can take 3 legendary actions, choosing from the
+        options below. Only one legendary action option can be used at a time
+        and only at the end of another creature’s turn. The
+        {{ item.name }} regains spent legendary actions at the start of its
+        turn.
+      </p>
 
-  <template v-if="item.legendary_actions">
-    <h3 class="border-b-2 border-stone-200 font-sans dark:border-stone-600">
-      Legendary Actions
-    </h3>
-
-    <p class="font-sans">
-      The {{ item.name }} can take 3 legendary actions, choosing from the
-      options below. Only one legendary action option can be used at a time and
-      only at the end of another creature’s turn. The {{ item.name }} regains
-      spent legendary actions at the start of its turn.
-    </p>
-
-    <p
-      class="pl-4 -indent-4 font-sans"
-      v-for="action in item.legendary_actions"
-    >
-      <strong>{{ action.name }}.</strong>
-      {{ action.desc }}
-    </p>
-  </template>
+      <p class="pl-4 -indent-4" v-for="action in item.legendary_actions">
+        <strong>{{ action.name }}.</strong>
+        {{ action.desc }}
+      </p>
+    </template>
+  </div>
 </template>
 
 <script>
