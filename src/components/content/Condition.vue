@@ -6,13 +6,9 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
 import { marked } from "marked";
 
 export default {
-  components: {
-    ItemHeader,
-  },
   props: ["item"],
   computed: {
     content() {

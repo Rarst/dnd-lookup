@@ -10,10 +10,7 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-
 export default {
-  components: { ItemHeader },
   props: ["item"],
 };
 </script>

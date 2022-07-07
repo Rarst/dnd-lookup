@@ -18,8 +18,6 @@
 <script>
 import types from "../types.js";
 
-import ItemHeader from "./ItemHeader.vue";
-
 import Ability from "./content/Ability.vue";
 import Class from "./content/Class.vue";
 import Condition from "./content/Condition.vue";
@@ -38,7 +36,6 @@ import Trait from "./content/Trait.vue";
 
 export default {
   components: {
-    ItemHeader,
     Ability,
     Class,
     Condition,

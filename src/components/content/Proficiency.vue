@@ -14,11 +14,7 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-import LinksSection from "../LinksSection.vue";
-
 export default {
-  components: { LinksSection, ItemHeader },
   props: ["item"],
 };
 </script>

@@ -54,12 +54,7 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-import LinksSection from "../LinksSection.vue";
-import ItemLink from "../ItemLink.vue";
-
 export default {
-  components: { ItemLink, LinksSection, ItemHeader },
   props: ["item"],
 };
 </script>

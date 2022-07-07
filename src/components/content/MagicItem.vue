@@ -11,12 +11,9 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-import ItemLink from "../ItemLink.vue";
 import { marked } from "marked";
 
 export default {
-  components: { ItemLink, ItemHeader },
   props: ["item"],
   computed: {
     content() {

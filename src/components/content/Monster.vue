@@ -188,12 +188,7 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-import ItemLink from "../ItemLink.vue";
-
 export default {
-  components: { ItemLink, ItemHeader },
-
   props: ["item"],
 
   computed: {

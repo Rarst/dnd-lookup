@@ -40,12 +40,9 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-import LinksSection from "../LinksSection.vue";
 import { marked } from "marked";
 
 export default {
-  components: { LinksSection, ItemHeader },
   props: ["item"],
   computed: {
     content() {

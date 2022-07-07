@@ -12,11 +12,7 @@
 </template>
 
 <script>
-import ItemLink from "./ItemLink.vue";
-
 export default {
-  components: { ItemLink },
-
   props: { item: Object, header: String, section: String, field: String },
 
   computed: {

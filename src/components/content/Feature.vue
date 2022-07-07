@@ -29,12 +29,7 @@
 </template>
 
 <script>
-import ItemHeader from "../ItemHeader.vue";
-import ItemLink from "../ItemLink.vue";
-import LinksSection from "../LinksSection.vue";
-
 export default {
-  components: { LinksSection, ItemLink, ItemHeader },
   props: ["item"],
   methods: {
     prerequisite(req) {
