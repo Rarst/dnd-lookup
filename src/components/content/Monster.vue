@@ -11,7 +11,7 @@
     </div>
 
     <div class="space-y-1">
-      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+      <hr class="separator-monster" />
 
       <p><strong>Armor Class</strong> {{ item.armor_class }}</p>
       <p>
@@ -28,7 +28,7 @@
         >
       </p>
 
-      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+      <hr class="separator-monster" />
 
       <div class="flex justify-between px-3 text-center">
         <span v-for="(long, short) in abilities"
@@ -37,7 +37,7 @@
         >
       </div>
 
-      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+      <hr class="separator-monster" />
 
       <p v-if="savingThrows">
         <strong>Saving Throws</strong> {{ savingThrows }}
@@ -74,7 +74,7 @@
         {{ cr }} ({{ xp }} XP)
       </p>
 
-      <hr class="clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600" />
+      <hr class="separator-monster" />
     </div>
 
     <template v-for="ability in item.special_abilities">

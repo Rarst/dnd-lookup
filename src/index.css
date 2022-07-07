@@ -67,6 +67,10 @@
       @apply -ml-4;
     }
   }
+
+  .separator-monster {
+    @apply clip-triangle-right h-1 border-0 bg-red-900 dark:bg-red-600;
+  }
 }
 
 @layer utilities {
