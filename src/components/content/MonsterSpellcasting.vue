@@ -4,8 +4,13 @@
       <strong>{{ spellcasting.name }}.</strong>
       The {{ name }} is an {{ sc.level }}th-level spellcaster. Its spellcasting
       ability is {{ abilityFull(sc.ability.name) }} (spell save DC {{ sc.dc }},
-      +{{ sc.modifier }} to hit with spell attacks). The {{ name }} has the
-      following {{ sc.school }} spells prepared:
+      +{{ sc.modifier }} to hit with spell attacks). The {{ name }}
+      <span v-if="spellsAtWill.length"
+        >can cast
+        <ItemLink v-for="spell in spellsAtWill" :linkTo="spell.name" /> at will
+        and</span
+      >
+      has the following {{ sc.school }} spells prepared:
     </p>
     <ul class="sm:list-disc">
       <li v-if="spellsLevel(0).length">
@@ -114,6 +119,12 @@ export default {
 
     sc() {
       return this.spellcasting.spellcasting;
+    },
+
+    spellsAtWill() {
+      return this.sc.spells.filter(
+        (spell) => spell.usage && spell.usage.type === "at will"
+      );
     },
   },
   methods: {
