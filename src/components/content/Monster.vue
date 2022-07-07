@@ -75,76 +75,25 @@
     </div>
 
     <template v-for="ability in item.special_abilities">
-      <template v-if="ability.name === 'Spellcasting'">
-        <p>
-          <strong>{{ ability.name }}.</strong>
-          The {{ item.name }} is an {{ sc.level }}th-level spellcaster. Its
-          spellcasting ability is {{ abilityFull(sc.ability.name) }} (spell save
-          DC {{ sc.dc }}, +{{ sc.modifier }} to hit with spell attacks). The
-          {{ item.name }} has the following {{ sc.school }} spells prepared:
-        </p>
-        <ul class="sm:list-disc">
-          <li v-if="spellsLevel(0).length">
-            Cantrips (at will):
-            <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell" />
-          </li>
-          <li v-for="(count, level) in sc.slots">
-            {{ suffixLevel(level) }} ({{ countSlots(count) }}):
-            <ItemLink
-              v-for="spell in spellsLevel(parseInt(level))"
-              :linkTo="spell"
-            />
-          </li>
-        </ul>
-      </template>
-      <div v-else-if="ability.name === 'Innate Spellcasting'">
-        <p>
-          <strong>{{ ability.name }}. </strong>
-          The {{ item.name }}'s spellcasting ability is {{ isc.abilityName }}
-          <span v-if="isc.spellAttack"> ({{ isc.spellAttack }})</span>. It can
-          innately cast the following spells<span
-            v-if="ability.desc.includes('no material components')"
-            >, requiring no material components</span
-          ><span v-if="isc.components.length === 1 && isc.components[0] === 'V'"
-            >, requiring only verbal components</span
-          >:
-        </p>
-        <ul class="marker:text-stone-300 sm:list-disc">
-          <li v-if="isc.spellsGrouped['at will']">
-            At will:
-            <template v-for="spell in isc.spellsGrouped['at will']">
-              <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
-                >({{ spell.notes }})</span
-              >
-            </template>
-          </li>
-          <template v-for="count in 5">
-            <li v-if="isc.spellsGrouped[6 - count]">
-              {{ 6 - count }}/day each:
-              <template v-for="spell in isc.spellsGrouped[6 - count]">
-                <ItemLink :linkTo="spell.name" /><span v-if="spell.notes"
-                  >({{ spell.notes }})</span
-                >
-              </template>
-            </li>
-          </template>
-        </ul>
-      </div>
-      <template v-else>
-        <p
-          v-for="(paragraph, index) in ability.desc.split(/\n+/)"
-          :class="{ 'indent-4': index }"
+      <MonsterSpellcasting
+        v-if="['Spellcasting', 'Innate Spellcasting'].includes(ability.name)"
+        :name="item.name"
+        :spellcasting="ability"
+      />
+      <p
+        v-else
+        v-for="(paragraph, index) in ability.desc.split(/\n+/)"
+        :class="{ 'indent-4': index }"
+      >
+        <strong v-if="!index"
+          >{{ ability.name
+          }}<span v-if="ability.dc">
+            ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
+          ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
+          >.</strong
         >
-          <strong v-if="!index"
-            >{{ ability.name
-            }}<span v-if="ability.dc">
-              ({{ ability.dc.dc_type.name }} {{ ability.dc.dc_value }})</span
-            ><span v-if="ability.usage">{{ usage(ability.usage) }}</span
-            >.</strong
-          >
-          {{ paragraph }}
-        </p>
-      </template>
+        {{ paragraph }}
+      </p>
     </template>
 
     <h3 class="border-b-2 border-stone-200 dark:border-stone-600">Actions</h3>
@@ -185,8 +134,11 @@
 </template>
 
 <script>
+import MonsterSpellcasting from "./MonsterSpellcasting.vue";
+
 export default {
   props: ["item"],
+  components: { MonsterSpellcasting },
 
   computed: {
     abilities: () => ({
@@ -221,50 +173,6 @@ export default {
       return bonus > 0 ? "+" + bonus : bonus;
     },
 
-    isc() {
-      const isc = this.item.special_abilities.find(
-        (ability) => ability.name === "Innate Spellcasting"
-      ).spellcasting;
-
-      let abilityName = this.abilityFull(isc.ability.name);
-      isc.abilityName = abilityName[0].toUpperCase() + abilityName.slice(1);
-      isc.components = isc.components_required;
-
-      const spells = {};
-
-      for (let spell of isc.spells) {
-        if (spell.usage.type === "at will") {
-          if (!spells["at will"]) {
-            spells["at will"] = [];
-          }
-          spells["at will"].push(spell);
-        } else {
-          let times = spell.usage.times;
-          if (!spells[times]) {
-            spells[times] = [];
-          }
-
-          spells[times].push(spell);
-        }
-      }
-
-      isc.spellsGrouped = spells;
-
-      const spellAttack = [];
-
-      if (isc.dc) {
-        spellAttack.push(`spell save DC ${isc.dc}`);
-      }
-
-      if (isc.modifier) {
-        spellAttack.push(`+${isc.modifier} to hit with spell attacks`);
-      }
-
-      isc.spellAttack = spellAttack.join(", ");
-
-      return isc;
-    },
-
     savingThrows() {
       return this.item.proficiencies
         .filter((p) => p.proficiency.name.includes("Saving Throw: "))
@@ -282,12 +190,6 @@ export default {
         .join(", ");
     },
 
-    sc() {
-      return this.item.special_abilities.find(
-        (ability) => ability.name === "Spellcasting"
-      ).spellcasting;
-    },
-
     xp() {
       return new Intl.NumberFormat().format(this.item.xp);
     },
@@ -298,23 +200,9 @@ export default {
       return this.abilities[abilityShort];
     },
 
-    countSlots(slots) {
-      return slots === 1 ? "1 slot" : slots + " slots";
-    },
-
     modifier(score) {
       const modifier = Math.floor((score - 10) / 2);
       return modifier >= 0 ? "+" + modifier : modifier;
-    },
-
-    suffixLevel(level) {
-      const suffixes = {
-        1: "1st",
-        2: "2nd",
-        3: "3rd",
-      };
-
-      return suffixes[level] ? suffixes[level] + " level" : level + "th level";
     },
 
     usage(usage) {
@@ -331,12 +219,6 @@ export default {
       }
 
       return ` (${usage.type})`;
-    },
-
-    spellsLevel(level) {
-      return this.sc.spells
-        .filter((spell) => spell.level === level)
-        .map((spell) => spell.name);
     },
   },
 };
