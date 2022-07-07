@@ -11,10 +11,10 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-const app = createApp(App);
+const Vue = createApp(App);
 
-app.component("ItemHeader", ItemHeader);
-app.component("ItemLink", ItemLink);
-app.component("LinksSection", LinksSection);
+Vue.component("ItemHeader", ItemHeader);
+Vue.component("ItemLink", ItemLink);
+Vue.component("LinksSection", LinksSection);
 
-app.mount("#app");
+Vue.mount("#app");
