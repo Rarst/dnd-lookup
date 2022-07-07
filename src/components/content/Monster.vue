@@ -24,7 +24,7 @@
       <p>
         <strong>Speed </strong>
         <span v-for="(value, type, index) in item.speed">
-          <span v-if="index != 0">, </span>{{ type }} {{ value }}</span
+          <span v-if="index">, </span>{{ type }} {{ value }}</span
         >
       </p>
 
@@ -60,7 +60,7 @@
       <p>
         <strong>Senses </strong>
         <span v-for="(value, type, index) in item.senses"
-          ><span v-if="index != 0">, </span>{{ type.replace("_", " ") }}
+          ><span v-if="index">, </span>{{ type.replace("_", " ") }}
           {{ value }}</span
         >
       </p>
