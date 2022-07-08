@@ -12,7 +12,7 @@
       >
       has the following {{ sc.school }} spells prepared:
     </p>
-    <ul class="sm:list-disc">
+    <ul class="!mt-0 sm:list-disc">
       <li v-if="spellsLevel(0).length">
         Cantrips (at will):
         <ItemLink v-for="spell in spellsLevel(0)" :linkTo="spell.name" />
@@ -39,7 +39,7 @@
         >, requiring only verbal components</span
       >:
     </p>
-    <ul class="marker:text-stone-300 sm:list-disc">
+    <ul class="!mt-0 marker:text-stone-300 sm:list-disc">
       <li v-if="isc.spellsGrouped['at will']">
         At will:
         <template v-for="spell in isc.spellsGrouped['at will']">
