@@ -17,7 +17,7 @@
     <button
       v-show="modelValue"
       @click="$emit('clear')"
-      class="absolute right-1 mr-1 rounded-full p-2 text-gray-600 transition-colors duration-100 hover:bg-red-100 hover:text-red-700 focus:outline-none dark:text-stone-600 dark:hover:bg-red-900 dark:hover:text-red-600"
+      class="absolute right-1 mr-1 rounded-full p-2 text-gray-600 transition-colors duration-200 ease-in-out hover:bg-red-100 hover:text-red-700 focus:outline-none dark:text-stone-600 dark:hover:bg-red-900 dark:hover:text-red-600"
       title="Clear (Esc)"
     >
       <svg
