@@ -7,7 +7,8 @@
     "serve": "vite preview",
     "check-style": "prettier --check ./index.html ./tests/*.js ./src/**/*.{css,js,vue}",
     "test": "codeceptjs run",
-    "server-test": "start-server-and-test dev http://127.0.0.1:3000/index.html"
+    "server-test": "start-server-and-test dev http://127.0.0.1:3000/index.html",
+    "netlify": "npx playwright install-deps chromium && npm run server-test && npm run build"
   },
   "dependencies": {
     "vue": "^3.2.19"
