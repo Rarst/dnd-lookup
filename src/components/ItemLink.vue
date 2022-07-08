@@ -1,6 +1,6 @@
 <template>
   <a
-    class="m-1 inline-block rounded-lg bg-stone-200 py-1 px-2 font-serif font-semibold transition-colors duration-100 hover:bg-red-100 hover:text-red-700 dark:bg-stone-700 dark:text-stone-300 dark:hover:bg-red-900 dark:hover:text-red-600"
+    class="m-1 inline-block rounded-lg bg-stone-200 py-1 px-2 text-center font-serif font-semibold transition-colors duration-200 ease-in-out hover:bg-red-100 hover:text-red-700 dark:bg-stone-700 dark:text-stone-300 dark:hover:bg-red-900 dark:hover:text-red-600"
     :href="'#' + link"
     >{{ link }}</a
   >
