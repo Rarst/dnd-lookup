@@ -83,7 +83,7 @@
       <p
         v-else
         v-for="(paragraph, index) in ability.desc.split(/\n+/)"
-        :class="{ 'indent-4': index }"
+        :class="{ '!mt-0 indent-4': index }"
       >
         <strong v-if="!index"
           >{{ ability.name
@@ -101,7 +101,7 @@
     <template v-for="action in item.actions">
       <p
         v-for="(paragraph, index) in action.desc.split(/\n+/)"
-        :class="{ 'indent-4': index }"
+        :class="{ '!mt-0 indent-4': index }"
       >
         <strong v-if="!index"
           >{{ action.name
