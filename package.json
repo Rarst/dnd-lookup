@@ -20,6 +20,7 @@
     "autoprefixer": "^10.3.6",
     "codeceptjs": "^3.3.3",
     "marked": "^4.0.17",
+    "netlify-plugin-cache": "^1.0.3",
     "playwright": "^1.22.2",
     "postcss": "^8.3.8",
     "prettier": "^2.7.1",
