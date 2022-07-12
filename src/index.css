@@ -77,4 +77,8 @@
   .clip-triangle-right {
     clip-path: polygon(0 0, 100% 50%, 0 100%);
   }
+
+  .p-indent p + p {
+    @apply indent-4;
+  }
 }
