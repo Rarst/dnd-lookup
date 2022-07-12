@@ -39,13 +39,16 @@
 
 <script>
 export default {
-  created() {
+  mounted() {
     window.addEventListener("scroll", this.handleScroll, { passive: true });
+    this.inputTop = this.$refs.input.getBoundingClientRect().top;
   },
 
   data() {
     return {
+      inputTop: 0,
       lastScrollPosition: 0,
+      scrolledPastInput: false,
       scrollingDown: false,
     };
   },
@@ -57,8 +60,8 @@ export default {
   computed: {
     headerClasses() {
       return {
-        "opacity-0": this.scrollingDown,
-        "shadow-md": this.lastScrollPosition > 0,
+        "opacity-0": this.scrolledPastInput && this.scrollingDown,
+        "shadow-md": this.lastScrollPosition > this.inputTop,
       };
     },
 
@@ -73,6 +76,7 @@ export default {
     },
 
     handleScroll() {
+      this.scrolledPastInput = window.scrollY > this.inputTop;
       this.scrollingDown = window.scrollY > this.lastScrollPosition;
       this.lastScrollPosition = window.scrollY;
     },
