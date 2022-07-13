@@ -1,4 +1,8 @@
 [build.environment]
 NODE_VERSION = "18"
+[[headers]]
+    for = "/"
+    [headers.values]
+        Link = '<https://cdn.jsdelivr.net>; rel="preconnect",<https://fonts.bunny.net>; rel="preconnect"'
 #[[plugins]]
 #package = "netlify-plugin-cache"
