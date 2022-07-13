@@ -11,7 +11,15 @@
       v-show="!results.length"
       class="mt-3 flex flex-wrap justify-center px-6"
     >
-      <TypeLink v-for="type in types" :type="type" :key="type"></TypeLink>
+      <TypeLink
+        v-for="type in types"
+        :type="type"
+        :key="type"
+        :class="{
+          'opacity-50': !typesLoaded.includes(type),
+          'pointer-events-none': loading,
+        }"
+      ></TypeLink>
     </div>
 
     <div v-show="results.length" class="mt-6 space-y-6">
@@ -26,6 +34,7 @@
 
 <script>
 import data from "./srdData.js";
+import types from "./types.js";
 
 import SearchInput from "./components/SearchInput.vue";
 import SearchResult from "./components/SearchResult.vue";
@@ -40,7 +49,8 @@ export default {
     return {
       loading: true,
       search: "",
-      types: [],
+      types: Object.keys(types),
+      typesLoaded: [],
       results: [],
       more: [],
     };
@@ -66,10 +76,9 @@ export default {
   methods: {
     init() {
       data
-        .fetchAll((type) => this.types.push(type))
+        .fetchAll((type) => this.typesLoaded.push(type))
         .then(() => {
           this.navigate();
-          this.types.sort();
           this.loading = false;
           this.$nextTick(() => this.focus());
         });
