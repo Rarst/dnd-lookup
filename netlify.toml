@@ -4,5 +4,13 @@ NODE_VERSION = "18"
     for = "/"
     [headers.values]
         Link = '<https://cdn.jsdelivr.net>; rel="preconnect",<https://fonts.bunny.net>; rel="preconnect"'
+[[headers]]
+    for = "/assets/index.*.js"
+    [headers.values]
+        cache-control = "max-age=31536000, immutable"
+[[headers]]
+    for = "/assets/index.*.css"
+    [headers.values]
+        cache-control = "max-age=31536000, immutable"
 #[[plugins]]
 #package = "netlify-plugin-cache"
