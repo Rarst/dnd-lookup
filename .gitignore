@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+/*.report.html
 
 /local
 /5e-database

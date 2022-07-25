@@ -8,7 +8,8 @@
     "check-style": "prettier --check ./index.html ./tests/*.js ./src/**/*.{css,js,vue}",
     "test": "codeceptjs run",
     "server-test": "start-server-and-test dev http://localhost:5173/index.html",
-    "netlify": "npx playwright install chromium && npm run server-test && npm run build"
+    "netlify": "npx playwright install chromium && npm run server-test && npm run build",
+    "lighthouse": "npm run build && \"node_modules/.bin/start-server-and-test\" serve http://localhost:4173/index.html 'lighthouse http://localhost:4173/index.html --view'"
   },
   "dependencies": {
     "vue": "^3.2.19"
