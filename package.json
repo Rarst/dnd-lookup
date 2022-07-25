@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "serve": "vite preview",
     "check-style": "prettier --check ./index.html ./tests/*.js ./src/**/*.{css,js,vue}",
     "test": "codeceptjs run",
@@ -18,6 +18,7 @@
     "@codeceptjs/configure": "^0.8.0",
     "@tailwindcss/typography": "^0.5.2",
     "@vitejs/plugin-vue": "^3.0.0",
+    "@vueuse/head": "^0.7.7",
     "autoprefixer": "^10.3.6",
     "codeceptjs": "^3.3.3",
     "marked": "^4.0.17",
@@ -28,6 +29,7 @@
     "prettier-plugin-tailwindcss": "^0.1.11",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.1.3",
-    "vite": "^3.0.0"
+    "vite": "^3.0.0",
+    "vite-ssg": "^0.20.2"
   }
 }

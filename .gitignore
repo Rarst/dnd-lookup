@@ -4,6 +4,7 @@ dist
 dist-ssr
 *.local
 /*.report.html
+/.vite-ssg-temp
 
 /local
 /5e-database
