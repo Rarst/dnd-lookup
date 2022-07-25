@@ -12,11 +12,10 @@ if (typeof navigator !== "undefined" && "serviceWorker" in navigator) {
   });
 }
 
-const Vue = ViteSSG(App);
-
-Vue.component("ItemHeader", ItemHeader);
-Vue.component("ItemLink", ItemLink);
-Vue.component("LinksSection", LinksSection);
-Vue.component("Markdown", Markdown);
-
-Vue.mount("#app");
+export const createApp = ViteSSG(App, ({ app }) => {
+  const Vue = app;
+  Vue.component("ItemHeader", ItemHeader);
+  Vue.component("ItemLink", ItemLink);
+  Vue.component("LinksSection", LinksSection);
+  Vue.component("Markdown", Markdown);
+});

@@ -5,6 +5,10 @@ NODE_VERSION = "18"
     [headers.values]
         Link = '<https://cdn.jsdelivr.net>; rel="preconnect",<https://fonts.bunny.net>; rel="preconnect"'
 [[headers]]
+    for = "/assets/app.*.js"
+    [headers.values]
+        cache-control = "max-age=31536000, immutable"
+[[headers]]
     for = "/assets/index.*.js"
     [headers.values]
         cache-control = "max-age=31536000, immutable"
