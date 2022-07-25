@@ -6,11 +6,21 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Alegreya Sans", ...defaultTheme.fontFamily.sans],
-        serif: ["Alegreya", ...defaultTheme.fontFamily.serif],
+        sans: [
+          "Alegreya Sans",
+          "Alegreya Sans-fallback",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        serif: [
+          "Alegreya",
+          "Alegreya-fallback",
+          ...defaultTheme.fontFamily.serif,
+        ],
         "serif-sc": [
           "Alegreya SC",
+          "Alegreya SC-fallback",
           "Alegreya",
+          "Alegreya-fallback",
           ...defaultTheme.fontFamily.serif,
         ],
       },

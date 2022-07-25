@@ -82,3 +82,21 @@
     @apply indent-4;
   }
 }
+
+@font-face {
+  font-family: "Alegreya-fallback";
+  size-adjust: 101%;
+  src: local("Times New Roman");
+}
+
+@font-face {
+  font-family: "Alegreya SC-fallback";
+  size-adjust: 113.6%;
+  src: local("Times New Roman");
+}
+
+@font-face {
+  font-family: "Alegreya Sans-fallback";
+  size-adjust: 86.56%;
+  src: local("Arial");
+}
