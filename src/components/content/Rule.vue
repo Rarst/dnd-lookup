@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-3">
     <ItemHeader :item="item"></ItemHeader>
-    <div v-html="content" class="prose"></div>
+    <Markdown :markdown="markdown" class="prose" />
     <LinksSection
       v-if="item.subsections"
       :item="item"
@@ -12,17 +12,15 @@
 </template>
 
 <script>
-import { marked } from "marked";
-
 export default {
   props: ["item"],
   computed: {
-    content() {
-      let content = this.item.desc;
-      content = content.replace(new RegExp(`^#+ ${this.item.name}[\?]*`), "");
-      content = marked.parse(content);
-
-      return content;
+    markdown() {
+      return this.item.desc.replace(
+        // remove top level header from markdown source
+        new RegExp(`^#+ ${this.item.name}[\?]*`),
+        ""
+      );
     },
   },
 };

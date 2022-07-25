@@ -1,33 +1,31 @@
 <template>
   <div class="space-y-3">
     <ItemHeader :item="item"></ItemHeader>
-    <div v-html="content" class="prose"></div>
+    <Markdown :markdown="markdown" class="prose" />
   </div>
 </template>
 
 <script>
-import { marked } from "marked";
-
 export default {
   props: ["item"],
   computed: {
-    content() {
-      let content = [];
+    markdown() {
+      let markdown = [];
 
       for (let sentence of this.item.desc) {
         if (sentence[0] === "-") {
           // unordered list item
-          content.push("\n" + sentence);
+          markdown.push("\n" + sentence);
         } else if (sentence.match(/^\d -/)) {
           // ordered list item
-          content.push("\n" + sentence.replace(/^(\d) -/, "$1."));
+          markdown.push("\n" + sentence.replace(/^(\d) -/, "$1."));
         } else {
           // paragraph or another standalone element
-          content.push("\n\n" + sentence);
+          markdown.push("\n\n" + sentence);
         }
       }
 
-      return marked.parse(content.join(""));
+      return markdown.join("");
     },
   },
 };

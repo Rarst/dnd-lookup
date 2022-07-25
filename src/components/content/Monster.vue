@@ -131,13 +131,16 @@
       </p>
     </template>
 
-    <div v-if="item.desc" v-html="flavor" class="p-indent font-serif"></div>
+    <Markdown
+      v-if="item.desc"
+      :markdown="item.desc"
+      class="p-indent font-serif"
+    />
   </div>
 </template>
 
 <script>
 import MonsterSpellcasting from "./MonsterSpellcasting.vue";
-import { marked } from "marked";
 
 export default {
   props: ["item"],
@@ -162,10 +165,6 @@ export default {
       };
 
       return crs[cr] ? crs[cr] : cr;
-    },
-
-    flavor() {
-      return marked.parse(this.item.desc);
     },
 
     hitPointBonus() {

@@ -28,7 +28,7 @@
   </p>
   <p v-if="item.material"><strong>Material:</strong> {{ item.material }}</p>
 
-  <div v-html="content" class="prose"></div>
+  <Markdown :markdown="markdown" class="prose" />
 
   <div v-if="item.higher_level">
     <h3>Higher level</h3>
@@ -40,25 +40,23 @@
 </template>
 
 <script>
-import { marked } from "marked";
-
 export default {
   props: ["item"],
   computed: {
-    content() {
-      let content = [];
+    markdown() {
+      let markdown = [];
 
       for (let sentence of this.item.desc) {
         if (sentence[0] === "-" || sentence[0] === "|") {
           // unordered list item or table row
-          content.push("\n" + sentence);
+          markdown.push("\n" + sentence);
         } else {
           // paragraph or another standalone element
-          content.push("\n\n" + sentence);
+          markdown.push("\n\n" + sentence);
         }
       }
 
-      return marked.parse(content.join(""));
+      return markdown.join("");
     },
   },
 };
