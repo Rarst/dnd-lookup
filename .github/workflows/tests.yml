@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: CodeceptJS
-        run: npm run server-test
+        run: npm run serve-test
         env:
           HEADLESS: true
 

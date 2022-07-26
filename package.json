@@ -5,11 +5,13 @@
     "dev": "vite",
     "build": "vite-ssg build",
     "serve": "vite preview",
+    "start": "vite-ssg build && vite preview",
     "check-style": "prettier --check ./index.html ./tests/*.js ./src/**/*.{css,js,vue}",
     "test": "codeceptjs run",
-    "server-test": "start-server-and-test dev http://localhost:5173/index.html",
-    "netlify": "npx playwright install chromium && npm run server-test && npm run build",
-    "lighthouse": "npm run build && \"node_modules/.bin/start-server-and-test\" serve http://localhost:4173/index.html 'lighthouse http://localhost:4173/index.html --view'"
+    "serve-test": "start-test :4173/index.html",
+    "netlify": "npx playwright install chromium && npm run serve-test",
+    "lighthouse": "lighthouse http://localhost:4173 --view",
+    "serve-lighthouse": "start-test :4173/index.html lighthouse"
   },
   "dependencies": {
     "vue": "^3.2.19"
