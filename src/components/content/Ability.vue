@@ -1,9 +1,11 @@
 <template>
+  // recognition works
   <ItemHeader
     :item="item"
     :header="item.name + ' (' + item.short_name + ')'"
   ></ItemHeader>
   <p v-for="paragraph in item.desc" :key="paragraph">{{ paragraph }}</p>
+  // recognition doesn't work
   <LinksSection :item="item" section="skills"></LinksSection>
 </template>
 

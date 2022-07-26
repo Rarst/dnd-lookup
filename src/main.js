@@ -13,9 +13,12 @@ if (typeof navigator !== "undefined" && "serviceWorker" in navigator) {
 }
 
 export const createApp = ViteSSG(App, ({ app }) => {
+  // recognition works
   const Vue = app;
   Vue.component("ItemHeader", ItemHeader);
-  Vue.component("ItemLink", ItemLink);
-  Vue.component("LinksSection", LinksSection);
-  Vue.component("Markdown", Markdown);
+
+  // recognition doesn't work
+  app.component("ItemLink", ItemLink);
+  app.component("LinksSection", LinksSection);
+  app.component("Markdown", Markdown);
 });
