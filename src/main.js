@@ -1,3 +1,4 @@
+import { createApp } from "vue";
 import App from "./App.vue";
 import { ViteSSG } from "vite-ssg/single-page";
 import ItemHeader from "./components/ItemHeader.vue";
@@ -12,13 +13,13 @@ if (typeof navigator !== "undefined" && "serviceWorker" in navigator) {
   });
 }
 
-export const createApp = ViteSSG(App, ({ app }) => {
-  // recognition works
-  const Vue = app;
-  Vue.component("ItemHeader", ItemHeader);
+const app = createApp(App);
 
-  // recognition doesn't work
-  app.component("ItemLink", ItemLink);
-  app.component("LinksSection", LinksSection);
-  app.component("Markdown", Markdown);
-});
+// recognition works
+const Vue = app;
+Vue.component("ItemHeader", ItemHeader);
+
+// recognition doesn't work
+app.component("ItemLink", ItemLink);
+app.component("LinksSection", LinksSection);
+app.component("Markdown", Markdown);
