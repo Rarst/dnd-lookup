@@ -20,7 +20,6 @@
     "@codeceptjs/configure": "^0.8.0",
     "@tailwindcss/typography": "^0.5.2",
     "@vitejs/plugin-vue": "^3.0.0",
-    "@vueuse/head": "^0.7.7",
     "autoprefixer": "^10.3.6",
     "codeceptjs": "^3.3.3",
     "critters": "^0.0.16",
