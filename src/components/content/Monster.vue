@@ -27,7 +27,7 @@
 
       <hr class="separator-monster" />
 
-      <div class="flex justify-between px-3 text-center">
+      <div class="flex justify-around text-center">
         <span v-for="(long, short) in abilities"
           ><strong>{{ short }}</strong
           ><br />{{ item[long] }} ({{ modifier(item[long]) }})</span
