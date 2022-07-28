@@ -11,6 +11,11 @@ export default {
   },
 
   fetch(type, typeLoadedCallback) {
+    // Errors in SSG.
+    if (typeof window.fetch === "undefined") {
+      return;
+    }
+
     return window
       .fetch(
         `https://cdn.jsdelivr.net/gh/bagelbits/5e-database@${version}/src/5e-SRD-${types[type].file}.json`

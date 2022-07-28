@@ -130,7 +130,10 @@ export default {
     },
 
     focus() {
-      this.$refs.input.focus();
+      // Errors in SSG.
+      if (typeof this.$refs?.input?.focus !== "undefined") {
+        this.$refs.input.focus();
+      }
     },
   },
 };
