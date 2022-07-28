@@ -9,12 +9,13 @@
 
     <div
       v-show="!results.length"
-      class="mt-3 flex flex-wrap justify-center px-6"
+      class="mt-3 flex flex-wrap justify-evenly px-3 sm:justify-between"
     >
       <TypeLink
         v-for="type in types"
         :type="type"
         :key="type"
+        class="first-letter:uppercase"
         :class="{
           'opacity-50': !typesLoaded.includes(type),
           'pointer-events-none': loading,
