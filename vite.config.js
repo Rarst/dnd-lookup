@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [vue()],
   ssgOptions: {
     mock: true,
+    crittersOptions: {
+      logLevel: "info",
+    },
   },
 });
