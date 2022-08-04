@@ -1,7 +1,7 @@
 import types from "./types.js";
 
 const rawData = {};
-const version = "1.3.1";
+const version = "2.0.1";
 
 export default {
   fetchAll(typeLoadedCallback) {

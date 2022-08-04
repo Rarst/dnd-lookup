@@ -14,7 +14,7 @@
     <strong class="font-semibold"
       >Ability options (choose {{ item.ability_bonus_options.choose }}):</strong
     >
-    <span v-for="bonus in item.ability_bonus_options.from">
+    <span v-for="bonus in item.ability_bonus_options.from.options">
       &nbsp;{{ bonus.ability_score.name + " +" + bonus.bonus }}</span
     >
   </p>
@@ -42,9 +42,9 @@
     </h3>
     <p class="-ml-1 flex flex-wrap">
       <ItemLink
-        v-for="link in item.starting_proficiency_options.from"
-        :linkTo="link.name"
-        :key="link.name"
+        v-for="reference in item.starting_proficiency_options.from.options"
+        :linkTo="reference.item.name"
+        :key="reference.item.name"
       ></ItemLink>
     </p>
   </div>

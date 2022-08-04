@@ -15,11 +15,19 @@
     >
       <h4>Choose {{ option.choose }}</h4>
       <p class="-ml-1 flex flex-wrap">
-        <ItemLink
-          v-for="link in option.from.map((o) => o.name)"
-          :linkTo="link"
-          :key="link"
-        ></ItemLink>
+        <template v-for="choice in option.from.options">
+          <ItemLink
+            v-if="choice.option_type === 'reference'"
+            :linkTo="choice.item.name"
+            :key="choice.item.name"
+          />
+          <ItemLink
+            v-else-if="choice.option_type === 'choice'"
+            v-for="reference in choice.choice.from.options"
+            :linkTo="reference.item.name"
+            :key="reference.item.name"
+          />
+        </template>
       </p>
     </div>
   </div>
